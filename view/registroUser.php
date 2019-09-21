@@ -19,8 +19,8 @@
 
 
 <div class="card bg-light">
-<article class="card-body mx-auto" style="max-width: 400px;">
-	<h4 class="card-title mt-3 text-center">Create Account</h4>
+<article class="card-body mx-auto" style="max-width: 500px;">
+	<h4 class="card-title mt-3 text-center">Crear Cuenta</h4>
 	<!-- <p>
 		<a href="" class="btn btn-block btn-twitter"> <i class="fab fa-twitter"></i>   Login via Twitter</a>
 		<a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   Login via facebook</a>
@@ -39,9 +39,9 @@
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
 		 </div>
-        <input name="" class="form-control"  style="max-width: 150px;" placeholder="Username" type="email">
+        <input name="" class="form-control"  style="max-width: 500px;" placeholder="Username" type="email">
     </div> <!-- form-group// -->
-    <div class="form-group input-group">
+    <!-- <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
 		</div>
@@ -52,7 +52,7 @@
 		    <option value="3">+701</option>
 		</select>
     	<input name="" class="form-control" placeholder="Phone number" type="text">
-    </div> <!-- form-group// -->
+    </div> form-group// -->
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-building"></i> </span>

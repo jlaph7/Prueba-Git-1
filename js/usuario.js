@@ -3,7 +3,7 @@ function inicio() {
 }
 
 function lista(pag) {
-    var url = 'PersonaAccion.php';
+    var url = 'model/Usuario.php';
     const data = new FormData();
     data.append('pag', pag);
     data.append('jsaccion', 'Listar');
