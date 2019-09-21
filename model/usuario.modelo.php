@@ -41,7 +41,7 @@ function Guardar(){
 
 function Actualizar()
 {
-    include_once("controller/conexion.php");
+    include_once("../controller/conexion.php");
     $id = $_POST['jsid_usuario'];
     $nom = $_POST['jsnombres'];
     $user = $_POST['jsusername'];
@@ -59,7 +59,7 @@ function Actualizar()
 
 function Editar()
 {
-    include_once("controller/conexion.php");
+    include_once("../controller/conexion.php");
     $id = $_POST['jsid_usuario'];
 
     $sql = "SELECT * FROM persona WHERE idpersona='$id'";
@@ -71,7 +71,7 @@ function Editar()
 
 function Eliminar()
 {
-    include_once("controller/conexion.php");
+    include_once("../controller/conexion.php");
     $id = $_POST['jsid_usuario'];
 
     $sql = "DELETE FROM persona WHERE idpersona='$id'";
