@@ -1,0 +1,30 @@
+#Errordocument 404 http://localhost/PruebaGit1/404
+
+<Files .htaccess>
+Order allow,deny
+Deny from all
+</Files>
+
+<IfModule mod_rewrite.c>
+RewriteEngine on
+
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.*)$ $1.php
+#RewriteRule ^([a-z]+)/?$ $1.php [NC]
+
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html
+#RewriteRule ^([a-z]+)/?$ $1.html [NC]
+
+</IfModule>
+
+#orden de los ficheros de carga por defecto
+DirectoryIndex index.html index.php
+
+#MISC
+Options +Indexes
+IndexOptions FancyIndexing FoldersFirst NameWidth=* DescriptionWidth=*
