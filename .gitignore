@@ -1,3 +1,4 @@
 *.txt
 *.xml
 images
+php/conexion.php
