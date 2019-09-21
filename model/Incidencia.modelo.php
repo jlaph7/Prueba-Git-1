@@ -23,7 +23,7 @@ if (isset( $_POST['jsaccion'])) {
 }
 
 function GuardarIncidencia(){
-    include_once("conexion.php");
+    include_once("../controller/conexion.php");
     $id_usu = $_POST['jsid_usuario'];
     $titu = $_POST['jstitulo'];
     $desc = $_POST['jsdescripcion'];
@@ -45,7 +45,7 @@ function GuardarIncidencia(){
 
 function ActualizarIncidencia()
 {
-    include_once("controller/conexion.php");
+    include_once("../controller/conexion.php");
     $id = $_POST['jsid_incidencia'];
     $id_usu = $_POST['jsid_usuario'];
     $titu = $_POST['jstitulo'];
@@ -67,7 +67,7 @@ function ActualizarIncidencia()
 
 function EliminarIncidencia(){
 
-    include_once("conexion.php");
+    include_once("../controller/conexion.php");
     $id = $_POST['idincidencia'];
     $sql="DELETE FROM incidencia WHERE id_incidencia='$id'";
     $resp=1;
@@ -76,7 +76,7 @@ function EliminarIncidencia(){
 }
 
 function EditarIncidencia(){
-    include_once("conexion.php");
+    include_once("../controller/conexion.php");
     $id = $_POST['id'];
 
     $sql="SELECT * FROM incidencia WHERE id_incidencia='$id'";
@@ -87,7 +87,7 @@ function EditarIncidencia(){
 }
 
 function ListarIncidencia(){
-    include_once("conexion.php");
+    include_once("../controller/conexion.php");
 // var_dump($_POST);
     $pag = $_POST['pag'];
     $crxp=10;
