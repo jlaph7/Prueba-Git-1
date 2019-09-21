@@ -7,12 +7,12 @@ if (isset( $_POST['jsaccion'])) {
         case 'Guardar':
            echo GuardarIncidencia();
             break;
-        // case 'Actualizar':
-        //    echo Actualizar();
-        //     break;
-        // case 'Editar':
-        //    echo  Editar();
-        //     break;
+        case 'Actualizar':
+           echo ActualizarIncidencia();
+            break;
+        case 'Editar':
+           echo  EditarIncidencia();
+            break;
         case 'Eliminar':
            echo EliminarIncidencia();
             break;
@@ -35,7 +35,7 @@ function GuardarIncidencia(){
     $sql='call GuardarIncidencia(?,?,?,?,?,?,?)';
 
     $stmt = $cnx->prepare($sql);
-    $stmt->bind_param('issssss',$id_usu,$titu,$desc,$fecha,$hora,$lat,$lon);
+    $stmt->bind_param('issssss', $id_usu, $titu, $desc, $fecha, $hora, $lat, $lon);
     $stmt->execute();
     $resp=$stmt->get_result();
     $stmt->close();
@@ -43,18 +43,27 @@ function GuardarIncidencia(){
     return $resp;
 }
 
-// function Actualizar(){
-//     include_once("conexion.php");
-//     $id = $_POST['id'];
-//     $nom = $_POST['jsnombres'];
-//     $ape = $_POST['jsapellidos'];
-//     $ema = $_POST['jsemail'];
+function ActualizarIncidencia()
+{
+    include_once("controller/conexion.php");
+    $id = $_POST['jsid_incidencia'];
+    $id_usu = $_POST['jsid_usuario'];
+    $titu = $_POST['jstitulo'];
+    $desc = $_POST['jsdescripcion'];
+    $fecha = $_POST['jsfecha'];
+    $hora = $_POST['jshora'];
+    $lat = $_POST['jslatitud'];
+    $lon = $_POST['jslongitud'];
 
-//     $sql="UPDATE persona SET nombres='$nom', apellidos='$ape', email='$ema' WHERE idpersona='$id'";
-//     $resp=1;
-//     $cnx->query($sql) or die($sql);
-//     return $resp;
-// }
+    $sql = 'call ActualizarUsuario(?,?,?,?,?,?,?,?)';
+    $stmt = $cnx->prepare($sql);
+    $stmt->bind_param('iissssss', $id, $id_usu, $titu, $desc, $fecha, $hora, $lat, $lon);
+    $stmt->execute();
+    $resp = $stmt->get_result();
+    $stmt->close();
+    $cnx->close();
+    return $resp;
+}
 
 function EliminarIncidencia(){
 
@@ -66,16 +75,16 @@ function EliminarIncidencia(){
     return $resp;
 }
 
-// function Editar(){
-//     include_once("conexion.php");
-//     $id = $_POST['id'];
+function EditarIncidencia(){
+    include_once("conexion.php");
+    $id = $_POST['id'];
 
-//     $sql="SELECT * FROM persona WHERE idpersona='$id'";
-//     $res = $cnx->query($sql);
-//     $reg = $res->fetchObject();
+    $sql="SELECT * FROM incidencia WHERE id_incidencia='$id'";
+    $res = $cnx->query($sql);
+    $reg = $res->fetchObject();
 
-//      return json_encode($reg);
-// }
+     return json_encode($reg);
+}
 
 function ListarIncidencia(){
     include_once("conexion.php");
