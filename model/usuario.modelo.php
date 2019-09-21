@@ -36,7 +36,7 @@ function Guardar(){
     $resp = $stmt->get_result();
     $stmt->close();
     $cnx->close();
-    return 1 ;
+    return $resp ;
 }
 
 function Actualizar()
