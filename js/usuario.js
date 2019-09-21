@@ -107,10 +107,6 @@ function guardar() {
     var usuario = $("#txtusuario").val();
     var password = $("#txtpassword").val();
     //var estado = $("#txtestado").val();
-    console.log(iduser);
-    console.log(nom);
-    console.log(usuario);
-    console.log(password);
 
     if (iduser > 0) {
         // Actualizar
@@ -161,13 +157,15 @@ function guardar() {
             data: { 'jsaccion': 'Guardar', 'jsnombres': nom, 'jsusername': usuario, 'jspassword': password },
             success: function(data) {
                 if (data == 1) {
-                    console.log(data);
 
                     $("#RegistroMensaje").html("Registro insertado!");
+
                     // lista(1);
                 } else {
-                    console.log(data);
+
+
                     $("#RegistroMensaje").html("Error al insertar el registro!");
+
                 }
             },
             error: function(jqXhr, textStatus, errorThrown) {

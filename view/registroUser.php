@@ -25,7 +25,7 @@
 	<!-- <p class="divider-text">
         <span class="bg-light">OR</span>
     </p> -->
-    <div class="alert alert-success" id="RegistroMensaje"></div>
+    <div class="alert" id="RegistroMensaje"></div>
 	<form>
     <div id="id"></div>
 	<div class="form-group input-group">
