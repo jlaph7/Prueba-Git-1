@@ -23,7 +23,7 @@ if (isset($_POST['jsaccion'])) {
 function Guardar(){
     include_once("../controller/conexion.php");   
 
-    $nomb = $_POST['jsnombres'];
+    $nom = $_POST['jsnombres'];
     $user = $_POST['jsusername'];
     $pass = $_POST['jspassword'];
 
