@@ -35,6 +35,7 @@ function Guardar(){
 			
         return "ok";
 
+<<<<<<< HEAD
     }else{
 
         return "error";
@@ -44,6 +45,15 @@ function Guardar(){
     $stmt -> close();
     $stmt = null;
     
+=======
+    $stmt = $cnx->prepare($sql);
+    $stmt->bind_param('sss', $nom, $user, $pass);
+    $stmt->execute();
+    $resp = $stmt->get_result();
+    $stmt->close();
+    $cnx->close();
+    return $resp ;
+>>>>>>> a967aa4c64f7e475dd6e65e37b8ff944e71259e0
 }
 
 function Actualizar()
