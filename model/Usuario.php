@@ -19,9 +19,9 @@ if (isset( $_POST['jsaccion'])) {
             break;
     }
 }
-
+include_once("controller/conexion.php");
 function Guardar(){
-    include_once("controller/conexion.php");
+   
 
     $nomb = $_POST['jsnombres'];
     $user = $_POST['jsusername'];
