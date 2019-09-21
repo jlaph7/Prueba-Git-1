@@ -10,7 +10,7 @@
     <title>Document</title>
 </head>
 <body>
-    
+
 <div class="container">
 
 
@@ -75,16 +75,16 @@
 		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 		</div>
         <input class="form-control" placeholder="Repeat password" type="password">
-    </div> <!-- form-group// -->                                      
+    </div> <!-- form-group// -->
     <div class="form-group">
         <button type="submit" class="btn btn-primary btn-block"> Create Account  </button>
-    </div> <!-- form-group// -->      
-    <p class="text-center">Have an account? <a href="">Log In</a> </p>                                                                 
+    </div> <!-- form-group// -->
+    <p class="text-center">Have an account? <a href="">Log In</a> </p>
 </form>
 </article>
 </div> <!-- card.// -->
 
-</div> 
+</div>
 <!--container end.//-->
 
 </body>
