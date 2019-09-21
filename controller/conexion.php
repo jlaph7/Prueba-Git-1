@@ -3,7 +3,7 @@ $drive 	= "mysql";
 $server	= "localhost";
 $base 	= "db_incidencia";
 $usuario 	= "root";
-$contrasena = "3sun4l4rgacontra";
+$contrasena = "";
 $cadena		="$drive:host=$server;dbname=$base";
 
 try {
