@@ -1,9 +1,21 @@
+const BtnCrear = document.getElementById('btnCrear');
+
+CargarEventListener();
+
+function CargarEventListener() {
+    BtnCrear.addEventListener('click', guardar);
+}
+
 function inicio() {
     lista(1);
 }
 
+function mensaje() {
+    console.log('holaaaaaa')
+}
+
 function lista(pag) {
-    var url = 'model/Usuario.php';
+    var url = '../model/usuario.modelo.php';
     const data = new FormData();
     data.append('pag', pag);
     data.append('jsaccion', 'Listar');
@@ -53,7 +65,7 @@ function lista(pag) {
 
 function eliminar(id) {
 
-    var url = 'model/Usuario.php';
+    var url = '../model/usuario.modelo.php';
 
     // Enviando datos post 
     const data = new FormData();
@@ -95,11 +107,14 @@ function guardar() {
     var usuario = $("#txtusuario").val();
     var password = $("#txtpassword").val();
     //var estado = $("#txtestado").val();
+    console.log(iduser);
+    console.log(nom);
+    console.log(usuario);
+    console.log(password);
 
-    console.log(id);
-    if (id > 0) {
+    if (iduser > 0) {
         // Actualizar
-        var url = 'model/Usuario.php';
+        var url = '../model/usuario.modelo.php';
         // Enviando datos post 
         const data = new FormData();
         data.append('jsaccion', 'Actualizar');
@@ -140,16 +155,19 @@ function guardar() {
 
     } else {
         $.ajax({
-            url: 'model/Usuario.php',
+            url: '../model/usuario.modelo.php',
             dataType: 'text',
             type: 'post',
             data: { 'jsaccion': 'Guardar', 'jsnombres': nom, 'jsusername': usuario, 'jspassword': password },
             success: function(data) {
                 if (data == 1) {
-                    $("#divmsg").html("Registro insertado!");
-                    lista(1);
+                    console.log(data);
+
+                    $("#RegistroMensaje").html("Registro insertado!");
+                    // lista(1);
                 } else {
-                    $("#divmsg").html("Error al insertar el registro!");
+                    console.log(data);
+                    $("#RegistroMensaje").html("Error al insertar el registro!");
                 }
             },
             error: function(jqXhr, textStatus, errorThrown) {
@@ -158,12 +176,12 @@ function guardar() {
         });
     }
     limpiar();
-    $("#divform").modal("toggle");
+
 }
 
 function editar(id) {
     $.ajax({
-        url: 'model/Usuario.php',
+        url: '../model/usuario.modelo.php',
         dataType: 'text',
         type: 'post',
         data: { 'jsaccion': 'Editar', 'jsid_usuario': id },

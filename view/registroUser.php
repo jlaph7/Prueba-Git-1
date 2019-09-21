@@ -7,14 +7,11 @@
     <link href="../vendor/bootstrap/js/bootstrap.js" rel="stylesheet">
      <link href="../vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
      <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <title>Document</title>
+    <title>Crear Cuenta Comercio</title>
 </head>
 <body>
 
 <div class="container">
-
-
-
 
 
 
@@ -28,19 +25,22 @@
 	<!-- <p class="divider-text">
         <span class="bg-light">OR</span>
     </p> -->
+    <div class="alert alert-success" id="RegistroMensaje"></div>
 	<form>
+    <div id="id"></div>
 	<div class="form-group input-group">
 		<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
 		 </div>
-        <input name="" class="form-control" placeholder="Nombres" type="text">
+        <input name="txtnombres" id="txtnombres" class="form-control" placeholder="Nombres" type="text">
     </div> <!-- form-group// -->
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
 		 </div>
-        <input name="" class="form-control"  style="max-width: 500px;" placeholder="Username" type="email">
+        <input name="txtusuario" id="txtusuario" class="form-control"  style="max-width: 500px;" placeholder="Username" type="text">
     </div> <!-- form-group// -->
+
     <!-- <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
@@ -53,7 +53,7 @@
 		</select>
     	<input name="" class="form-control" placeholder="Phone number" type="text">
     </div> form-group// -->
-    <div class="form-group input-group">
+    <!-- <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-building"></i> </span>
 		</div>
@@ -63,21 +63,21 @@
 			<option>Manager</option>
 			<option>Accaunting</option>
 		</select>
-	</div> <!-- form-group end.// -->
+	</div> form-group end.// -->
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 		</div>
-        <input class="form-control" placeholder="Create password" type="password">
+        <input name= "txtpassword" id="txtpassword" class="form-control" placeholder="Password" type="password">
     </div> <!-- form-group// -->
-    <div class="form-group input-group">
+    <!-- <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 		</div>
         <input class="form-control" placeholder="Repeat password" type="password">
-    </div> <!-- form-group// -->
+    </div> form-group// -->
     <div class="form-group">
-        <button type="submit" class="btn btn-primary btn-block"> Create Account  </button>
+        <button type="button" id="btnCrear" class="btn btn-primary btn-block"> Crear Cuenta  </button>
     </div> <!-- form-group// -->
     <p class="text-center">Have an account? <a href="">Log In</a> </p>
 </form>
@@ -86,6 +86,7 @@
 
 </div>
 <!--container end.//-->
+<script src="../js/usuario.js"></script>
 
 </body>
 </html>

@@ -21,12 +21,13 @@ if (isset($_POST['jsaccion'])) {
 }
 
 function Guardar(){
-    include_once("controller/conexion.php");   
+    include_once("../controller/conexion.php");   
 
     $nomb = $_POST['jsnombres'];
     $user = $_POST['jsusername'];
     $pass = $_POST['jspassword'];
 
+   
     $sql = 'call GuardarUsuario(?,?,?)';
 
     $stmt = $cnx->prepare($sql);
@@ -35,7 +36,7 @@ function Guardar(){
     $resp = $stmt->get_result();
     $stmt->close();
     $cnx->close();
-    return $resp;
+    return 1 ;
 }
 
 function Actualizar()
