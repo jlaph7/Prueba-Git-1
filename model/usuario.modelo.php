@@ -27,15 +27,15 @@ function Guardar(){
     $user = $_POST['jsusername'];
     $pass = $_POST['jspassword'];
 
-    $stmt = $cnx->prepare("CALL GuardarUsuario(:$nom, :$user, :$pass)");
+    $stmt = Conexion::conectar()->prepare("CALL GuardarUsuario(:$nom, :$user, :$pass)");
     $stmt -> bindParam(":".$nom, $nom, PDO::PARAM_STR);
     $stmt -> bindParam(":".$user,$user, PDO::PARAM_STR);
     $stmt -> bindParam(":".$pass, $pass, PDO::PARAM_STR);
+    
     if ($stmt->execute()) {
 			
         return "ok";
 
-<<<<<<< HEAD
     }else{
 
         return "error";
@@ -43,17 +43,8 @@ function Guardar(){
     }
 
     $stmt -> close();
-    $stmt = null;
-    
-=======
-    $stmt = $cnx->prepare($sql);
-    $stmt->bind_param('sss', $nom, $user, $pass);
-    $stmt->execute();
-    $resp = $stmt->get_result();
-    $stmt->close();
-    $cnx->close();
-    return $resp ;
->>>>>>> a967aa4c64f7e475dd6e65e37b8ff944e71259e0
+    $stmt = null; 
+    return 1;
 }
 
 function Actualizar()
