@@ -20,29 +20,29 @@ if (isset($_POST['jsaccion'])) {
     }
 }
 
-function Guardar(){
+function Guardar()
+{
     include_once("../controller/conexion.php");
 
     $nom = $_POST['jsnombres'];
     $user = $_POST['jsusername'];
     $pass = $_POST['jspassword'];
 
-    $sql='call GuardarUsuario(:nom,:user,:pass)';
+    $sql = 'call GuardarUsuario(:nom,:user,:pass)';
     $stmt = $cnx->prepare($sql);
-    $stmt -> bindParam(":nom", $nom);
-    $stmt -> bindParam(":user", $user);
-    $stmt -> bindParam(":pass", $pass);
+    $stmt->bindParam(":nom", $nom);
+    $stmt->bindParam(":user", $user);
+    $stmt->bindParam(":pass", $pass);
     if ($stmt->execute()) {
-        $resp= 1;
-    }else{
-        $resp=0;
+        $resp = 1;
+    } else {
+        $resp = 0;
     }
 
     $stmt = null;
-    $cnx=null;
-    
-    return $resp;
+    $cnx = null;
 
+    return $resp;
 }
 
 function Actualizar()
@@ -53,13 +53,22 @@ function Actualizar()
     $user = $_POST['jsusername'];
     $pass = $_POST['jspassword'];
 
-    $sql = 'call ActualizarUsuario(?,?,?,?)';
+    $sql = 'call ActualizarUsuario(:id,:nom,:user,:pass)';
+
     $stmt = $cnx->prepare($sql);
-    $stmt->bind_param('isss', $id, $nom, $user, $pass);
-    $stmt->execute();
-    $resp = $stmt->get_result();
-    $stmt->close();
-    $cnx->close();
+    $stmt->bindParam(":id", $id);
+    $stmt->bindParam(":nom", $nom);
+    $stmt->bindParam(":user", $user);
+    $stmt->bindParam(":pass", $pass);
+    if ($stmt->execute()) {
+        $resp = 1;
+    } else {
+        $resp = 0;
+    }
+
+    $stmt = null;
+    $cnx = null;
+
     return $resp;
 }
 
