@@ -1,7 +1,5 @@
-<?php 
+<?php
 
-// class ModeloIncidencia{	
-  
 if (isset( $_POST['jsaccion'])) {
     $accion = $_POST['jsaccion'];
 
@@ -19,7 +17,7 @@ if (isset( $_POST['jsaccion'])) {
            echo EliminarIncidencia();
             break;
         case 'Listar':
-           echo mdlMostrarIncidencia();
+           echo ListarIncidencia($valor);
             break;
     }
 }
@@ -103,36 +101,36 @@ function EditarIncidencia(){
 
 // }
 
- 
-    function mdlMostrarIncidencia($valor){
-        
+
+    function ListarIncidencia($valor){
+
         include_once("../controller/conexion.php");
 
-        //$pag = $_POST['pag'];
-        $pag = 1;
+        $pag = $_POST['pag'];
+        //$pag = 1;
         $crxp=10;
         $inicio = ($pag-1)*$crxp;
 
         if ($valor != null) {
 
             $sql="SELECT * FROM incidencia WHERE id_usuario = :$valor LIMIT $inicio,$crxp";
-            
+
             $stmt = $cnx->prepare($sql);
             $stmt -> bindParam(":".$valor, $valor, PDO::PARAM_INT);
             $stmt -> execute();
-            
+
             $row = $stmt -> fetchAll(PDO::FETCH_ASSOC);
-                var_dump($row);
-                return json_encode($row);
+                //var_dump($row);
+            return json_encode($row);
 
         }else{
-            
+
             $sql="SELECT * FROM incidencia LIMIT $inicio,$crxp";
             $res = $cnx->query($sql);
                 $row = $res -> fetchAll(PDO::FETCH_ASSOC);
-                var_dump($row);
-                return json_encode($row);
-        }		
+                //var_dump($row);
+            return json_encode($row);
+        }
 
         $stmt = null;
         $cnx = null;
