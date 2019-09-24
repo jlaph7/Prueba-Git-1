@@ -93,9 +93,6 @@ function EditarIncidencia(){
      return json_encode($reg);
 }
 
-
-
-
     function ListarIncidencia($valor){
 
         include_once("../controller/conexion.php");
