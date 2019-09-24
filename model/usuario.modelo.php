@@ -21,32 +21,27 @@ if (isset($_POST['jsaccion'])) {
 }
 
 function Guardar(){
-    include_once("../controller/conexion.php");   
+    include_once("../controller/conexion.php");
 
     $nom = $_POST['jsnombres'];
     $user = $_POST['jsusername'];
     $pass = $_POST['jspassword'];
 
-    $stmt = $cnx->prepare("CALL GuardarUsuario(:$nom, :$user, :$pass)");
-    $stmt -> bindParam(":".$nom, $nom, PDO::PARAM_STR);
-    $stmt -> bindParam(":".$user,$user, PDO::PARAM_STR);
-    $stmt -> bindParam(":".$pass, $pass, PDO::PARAM_STR);
+    $sql='call GuardarUsuario(:nom,:user,:pass)';
+    $stmt = $cnx->prepare($sql);
+    $stmt -> bindParam(":nom", $nom);
+    $stmt -> bindParam(":user", $user);
+    $stmt -> bindParam(":pass", $pass);
     if ($stmt->execute()) {
-			
-        return "ok";
-
-
+        $resp= 1;
     }else{
-
-        return "error";
-
+        $resp=0;
     }
 
-    $stmt -> close();
     $stmt = null;
+    $cnx=null;
     
-
-    return 1 ;
+    return $resp;
 
 }
 

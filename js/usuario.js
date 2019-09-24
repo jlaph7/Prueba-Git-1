@@ -157,7 +157,7 @@ function guardar() {
             data: { 'jsaccion': 'Guardar', 'jsnombres': nom, 'jsusername': usuario, 'jspassword': password },
             success: function(data) {
                 if (data == 1) {
-                    console.log(data);
+
                     $("#RegistroMensaje").html("Registro insertado!");
 
                     // lista(1);
