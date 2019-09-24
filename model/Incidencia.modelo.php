@@ -100,4 +100,58 @@ function ListarIncidencia(){
                 return json_encode($row);
 
 }
+
+ 
+    function mdlMostrarIncidencia($item, $valor){
+        
+        include_once("../controller/conexion.php");
+
+        $pag = $_POST['pag'];
+        $crxp=10;
+        $inicio = ($pag-1)*$crxp;
+
+        if ($item != null) {
+
+            $sql="SELECT * FROM incidencia WHERE $item = :$item LIMIT $inicio,$crxp";
+            $stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
+
+            $res = $cnx->query($sql);
+                $row = $res -> fetchAll(PDO::FETCH_ASSOC);
+                return json_encode($row);
+
+            // $stmt = Conexion::conectar()->prepare("SELECT * FROM incidencia WHERE $item = :$item");
+
+            // $stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
+
+            // $stmt -> execute();
+
+            // return $stmt -> fetchAll();
+
+        }else{
+            
+            $sql="SELECT * FROM incidencia WHERE $item = :$item LIMIT $inicio,$crxp";
+            $stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
+
+            $res = $cnx->query($sql);
+                $row = $res -> fetchAll(PDO::FETCH_ASSOC);
+                return json_encode($row);
+            
+            // $stmt = Conexion::conectar()->prepare("SELECT * FROM incidencia");
+
+            // $stmt -> execute();
+
+            // return $stmt -> fetchAll();
+
+        }		
+
+        // $stmt ->close();
+
+        // $stmt = null;
+
+        $stmt = null;
+        $cnx = null;
+
+    }
+    //FIN MOSTRAR
+
 ?>
