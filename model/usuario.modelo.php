@@ -109,3 +109,18 @@ function Listar()
     $cnx=null;
     return json_encode($row);
 }
+class Usuario{
+    public static  function Sesion(){
+        // $_SESSION['id_usuario']=1;  
+        session_start();     
+        $user= array(
+            $_SESSION['sesion']['id_usuario']=null,
+            $_SESSION['sesion']['nombres']='Daniel Farro Vela',
+            $_SESSION['sesion']['username']='daniel0505',
+            
+        );
+
+        return  $user;
+    }
+}
+

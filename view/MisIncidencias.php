@@ -1,13 +1,3 @@
-<?php
-	require_once '../model/usuario.modelo.php';
-	$usuario = new Usuario();
-	$identidad[	] = $usuario->Sesion();
-	//  Usuario::Sesion();
-	
-
-	// var_dump($identidad);
-	 var_dump($_SESSION);
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,7 +40,17 @@
 		 </div>
         <input name="txtusuario" id="txtusuario" class="form-control"  style="max-width: 500px;" placeholder="Username" type="text">
     </div> <!-- form-group// -->
+<?php
+    
+        // include_once("../model/incidencia.modelo.php");
 
+        // //$item = "id_usuario";
+        // $valor = 1;
+        // //$Prueba = ModeloIncidencia::mdlMostrarIncidencia($item, $valor);
+
+        // $respuesta =ListarIncidencia($valor);
+        // var_dump($respuesta);  
+?>    
     <!-- <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
@@ -87,16 +87,16 @@
         <input class="form-control" placeholder="Repeat password" type="password">
     </div> form-group// -->
     <div class="form-group">
-        <button type="button" id="btnCrear" class="btn btn-primary btn-block"> Crear Cuenta  </button>
+        <button type="button"  name= "btnPrueba"  id="btnPrueba" class="btn btn-primary btn-block"> Prueba  </button>
     </div> <!-- form-group// -->
-    <p class="text-center">Have an account? <a href="">Log In</a> </p>
+    <!-- <p class="text-center">Have an account? <a href="">Log In</a> </p> -->
 </form>
 </article>
 </div> <!-- card.// -->
 
 </div>
 <!--container end.//-->
-<script src="../js/usuario.js"></script>
+<script src="../js/incidencia.js"></script>
 
 </body>
 </html>
