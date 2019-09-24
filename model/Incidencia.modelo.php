@@ -119,6 +119,8 @@ function ListarIncidencia(){
                 $row = $res -> fetchAll(PDO::FETCH_ASSOC);
                 return json_encode($row);
 
+                var_dump($row);
+
             // $stmt = Conexion::conectar()->prepare("SELECT * FROM incidencia WHERE $item = :$item");
 
             // $stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
@@ -129,12 +131,13 @@ function ListarIncidencia(){
 
         }else{
             
-            $sql="SELECT * FROM incidencia WHERE $item = :$item LIMIT $inicio,$crxp";
+            $sql="SELECT * FROM incidencia LIMIT $inicio,$crxp";
             $stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
 
             $res = $cnx->query($sql);
                 $row = $res -> fetchAll(PDO::FETCH_ASSOC);
                 return json_encode($row);
+                //var_dump($row);
             
             // $stmt = Conexion::conectar()->prepare("SELECT * FROM incidencia");
 
