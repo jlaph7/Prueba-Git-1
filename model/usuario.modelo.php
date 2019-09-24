@@ -9,7 +9,7 @@ if (isset($_POST['jsaccion'])) {
             echo Actualizar();
             break;
         case 'Editar':
-            echo  Editar();
+            echo  Ver();
             break;
         case 'Eliminar':
             echo Eliminar();
@@ -20,29 +20,29 @@ if (isset($_POST['jsaccion'])) {
     }
 }
 
-function Guardar(){
+function Guardar()
+{
     include_once("../controller/conexion.php");
 
     $nom = $_POST['jsnombres'];
     $user = $_POST['jsusername'];
     $pass = $_POST['jspassword'];
 
-    $sql='call GuardarUsuario(:nom,:user,:pass)';
+    $sql = 'call GuardarUsuario(:nom,:user,:pass)';
     $stmt = $cnx->prepare($sql);
-    $stmt -> bindParam(":nom", $nom);
-    $stmt -> bindParam(":user", $user);
-    $stmt -> bindParam(":pass", $pass);
+    $stmt->bindParam(":nom", $nom);
+    $stmt->bindParam(":user", $user);
+    $stmt->bindParam(":pass", $pass);
     if ($stmt->execute()) {
-        $resp= 1;
-    }else{
-        $resp=0;
+        $resp = 1;
+    } else {
+        $resp = 0;
     }
 
     $stmt = null;
-    $cnx=null;
-    
-    return $resp;
+    $cnx = null;
 
+    return $resp;
 }
 
 function Actualizar()
@@ -53,17 +53,26 @@ function Actualizar()
     $user = $_POST['jsusername'];
     $pass = $_POST['jspassword'];
 
-    $sql = 'call ActualizarUsuario(?,?,?,?)';
+    $sql = 'call ActualizarUsuario(:id,:nom,:user,:pass)';
+
     $stmt = $cnx->prepare($sql);
-    $stmt->bind_param('isss', $id, $nom, $user, $pass);
-    $stmt->execute();
-    $resp = $stmt->get_result();
-    $stmt->close();
-    $cnx->close();
+    $stmt->bindParam(":id", $id);
+    $stmt->bindParam(":nom", $nom);
+    $stmt->bindParam(":user", $user);
+    $stmt->bindParam(":pass", $pass);
+    if ($stmt->execute()) {
+        $resp = 1;
+    } else {
+        $resp = 0;
+    }
+
+    $stmt = null;
+    $cnx = null;
+
     return $resp;
 }
 
-function Editar()
+function Ver()
 {
     include_once("../controller/conexion.php");
     $id = $_POST['jsid_usuario'];
@@ -71,7 +80,7 @@ function Editar()
     $sql = "SELECT * FROM persona WHERE idpersona='$id'";
     $res = $cnx->query($sql);
     $reg = $res->fetchObject();
-
+    $cnx=null;
     return json_encode($reg);
 }
 
@@ -83,7 +92,7 @@ function Eliminar()
     $sql = "DELETE FROM persona WHERE idpersona='$id'";
     $resp = 1;
     $cnx->query($sql) or $resp = 0;
-    $cnx->close();
+    $cnx=null;
     return $resp;
 }
 
@@ -97,6 +106,6 @@ function Listar()
     $sql = "SELECT * FROM persona LIMIT $inicio,$crxp";
     $res = $cnx->query($sql);
     $row = $res->fetchAll(PDO::FETCH_ASSOC);
-
+    $cnx=null;
     return json_encode($row);
 }

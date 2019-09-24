@@ -16,8 +16,8 @@ function CargarMapa() {
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: {
-            lat: -34.397,
-            lng: 150.644
+            lat: -12.046,
+            lng: -77.042
         },
         zoom: 6
     });
@@ -32,7 +32,7 @@ function initMap() {
             };
 
             infoWindow.setPosition(pos);
-            infoWindow.setContent('Location found.');
+            infoWindow.setContent('Ubicación Actual.');
             infoWindow.open(map);
             map.setCenter(pos);
         }, function() {
