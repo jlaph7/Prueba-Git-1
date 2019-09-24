@@ -80,7 +80,7 @@ function Editar()
     $sql = "SELECT * FROM persona WHERE idpersona='$id'";
     $res = $cnx->query($sql);
     $reg = $res->fetchObject();
-
+    $cnx=null;
     return json_encode($reg);
 }
 
@@ -92,7 +92,7 @@ function Eliminar()
     $sql = "DELETE FROM persona WHERE idpersona='$id'";
     $resp = 1;
     $cnx->query($sql) or $resp = 0;
-    $cnx->close();
+    $cnx=null;
     return $resp;
 }
 
@@ -106,6 +106,6 @@ function Listar()
     $sql = "SELECT * FROM persona LIMIT $inicio,$crxp";
     $res = $cnx->query($sql);
     $row = $res->fetchAll(PDO::FETCH_ASSOC);
-
+    $cnx=null;
     return json_encode($row);
 }
