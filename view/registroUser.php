@@ -1,3 +1,13 @@
+<?php
+	require_once '../model/usuario.modelo.php';
+	$usuario = new Usuario();
+	$identidad[	] = $usuario->Sesion();
+	//  Usuario::Sesion();
+	
+
+	// var_dump($identidad);
+	 var_dump($_SESSION);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -155,7 +155,7 @@ function guardar() {
             url: '../model/incidencia.modelo.php',
             dataType: 'text',
             type: 'post',
-            data: { 'jsaccion': 'Guardar', 'jsid_usuario': id_usu, 'jstitulo': titu, 'jsdescripcion': desc, 'jsfecha': fecha, 'jshora': hora, 'jslatitud': lat, 'jslongitud': lon  },
+            data: { 'jsaccion': 'Guardar', 'jsid_usuario': id_usu, 'jstitulo': titu, 'jsdescripcion': desc, 'jsfecha': fecha, 'jshora': hora, 'jslatitud': lat, 'jslongitud': lon },
             success: function(data) {
                 if (data == 1) {
                     $("#divmsg").html("Registro insertado!");
