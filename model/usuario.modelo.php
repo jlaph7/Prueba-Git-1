@@ -114,7 +114,7 @@ class Usuario{
         // $_SESSION['id_usuario']=1;  
         session_start();     
         $user= array(
-            $_SESSION['sesion']['id_usuario']=1,
+            $_SESSION['sesion']['id_usuario']=null,
             $_SESSION['sesion']['nombres']='Daniel Farro Vela',
             $_SESSION['sesion']['username']='daniel0505',
             

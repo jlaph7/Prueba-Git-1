@@ -16,8 +16,15 @@ if (isset( $_POST['jsaccion'])) {
         case 'Eliminar':
            echo EliminarIncidencia();
             break;
-        case 'Listar':
-           echo ListarIncidencia($valor);
+        case 'ListarIncidencia':
+           $valor = $_POST['jsid_usuario'];
+         
+           
+           if ($valor=null) {
+            echo ListarIncidencia(null);
+           }else{
+            echo ListarIncidencia($valor);
+           }
             break;
     }
 }
@@ -92,9 +99,10 @@ function EditarIncidencia(){
     function ListarIncidencia($valor){
 
         include_once("../controller/conexion.php");
-
+        include_once("../model/usuario.modelo.php");
         $pag = $_POST['pag'];
 
+        
         $crxp=10;
         $inicio = ($pag-1)*$crxp;
 

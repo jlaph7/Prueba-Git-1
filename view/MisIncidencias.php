@@ -40,7 +40,17 @@
 		 </div>
         <input name="txtusuario" id="txtusuario" class="form-control"  style="max-width: 500px;" placeholder="Username" type="text">
     </div> <!-- form-group// -->
+<?php
+    
+        // include_once("../model/incidencia.modelo.php");
 
+        // //$item = "id_usuario";
+        // $valor = 1;
+        // //$Prueba = ModeloIncidencia::mdlMostrarIncidencia($item, $valor);
+
+        // $respuesta =ListarIncidencia($valor);
+        // var_dump($respuesta);  
+?>    
     <!-- <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-phone"></i> </span>

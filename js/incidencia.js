@@ -14,11 +14,17 @@ function inicio() {
     lista(1);
 }
 
+function obtener_id() {
+    var id = "<?php 1  ?>";
+    console.log(id);
+}
+
 function MostrarIncidencia() {
     var url = '../model/incidencia.modelo.php';
     const data = new FormData();
     data.append('pag', 1);
-    data.append('jsaccion', 'MostrarIncidencia');
+    data.append('jsaccion', 'ListarIncidencia');
+    data.append('jsid_usuario', null);
 
     var miInit = {
         method: 'POST',
