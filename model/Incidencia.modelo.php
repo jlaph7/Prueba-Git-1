@@ -19,6 +19,11 @@ if (isset( $_POST['jsaccion'])) {
         case 'Listar':
            echo ListarIncidencia();
             break;
+        case 'MostrarIncidencia':
+            echo  mdlMostrarIncidencia(null, null);
+             break;
+
+            
     }
 }
 
@@ -102,7 +107,7 @@ function ListarIncidencia(){
 }
 
  
-    function mdlMostrarIncidencia($item, $valor){
+    function mdlMostrarIncidencia($item, $valor){ //id  // valor
         
         include_once("../controller/conexion.php");
 

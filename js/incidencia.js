@@ -1,5 +1,70 @@
+const BtnPrueba = document.getElementById('btnPrueba');
+
+CargarEventListener();
+
+function CargarEventListener() {
+    BtnPrueba.addEventListener('click', MostrarIncidencia);
+}
+
+function mensaje() {
+    console.log('holaaaaaa')
+}
+
 function inicio() {
     lista(1);
+}
+
+function MostrarIncidencia() {
+    var url = '../model/incidencia.modelo.php';
+    const data = new FormData();
+    data.append('pag', 1);
+    data.append('jsaccion', 'MostrarIncidencia');
+
+    var miInit = {
+        method: 'POST',
+        body: data
+    };
+
+    fetch(url, miInit)
+        .then(function(response) { // Primer THEN CONEXION CON EL ARCHIVO
+            if (response.ok) {
+                return response.text();
+            } else {
+                throw "Error en la llamada Ajax";
+            }
+        }).then(function(response) { // SE TIENE LOS DATOS, SE PUEDE IMPRIMIR
+
+            console.log(response);
+
+            // let html = '';
+
+            // response.forEach(function(datos) {
+
+            //     html += `
+            //     <tr>
+            //  			<td>${datos.id_incidencia}</td>
+            //  			<td>${datos.id_usuario}</td>
+            //  			<td>${datos.titulo}</td>
+            //              <td>${datos.descripcion}</td>
+            //              <td>${datos.fecha}</td>
+            //              <td>${datos.hora}</td>
+            //              <td>${datos.latitud}</td>
+            //              <td>${datos.longitud}</td>
+            //  			<td>
+            //  				<button class='btn btn-info' type='button' onclick='editar(${datos.id_incidencia})'>Editar</button>
+            // 				<button class='btn btn-danger' type='button' onclick='eliminar(${datos.id_incidencia})'>Eliminar</button>
+            //  			</td>
+            //  		</tr>
+            // `;
+
+            // });
+            // document.getElementById('divregistros').innerHTML = html;
+
+        })
+        .catch(function(error) { // CONTROLADOR DE ERRORES
+            console.error("!Hubo un error!", error);
+        });
+    // paginacion();
 }
 
 function lista(pag) {
