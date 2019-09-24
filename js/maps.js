@@ -32,7 +32,7 @@ function initMap() {
             };
 
             infoWindow.setPosition(pos);
-            infoWindow.setContent('Ubicación Actual.');
+            infoWindow.setContent('Ubicación Actual');
             infoWindow.open(map);
             map.setCenter(pos);
         }, function() {
