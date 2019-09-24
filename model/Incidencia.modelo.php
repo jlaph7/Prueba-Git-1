@@ -133,7 +133,6 @@ function ListarIncidencia(){
             
             $sql="SELECT * FROM incidencia LIMIT $inicio,$crxp";
             $stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
-
             $res = $cnx->query($sql);
                 $row = $res -> fetchAll(PDO::FETCH_ASSOC);
                 return json_encode($row);
