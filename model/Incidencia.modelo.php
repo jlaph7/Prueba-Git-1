@@ -137,7 +137,7 @@ function ListarIncidencia(){
                 $row = $res -> fetchAll(PDO::FETCH_ASSOC);
                 return json_encode($row);
                 //var_dump($row);
-            
+            asas;
             // $stmt = Conexion::conectar()->prepare("SELECT * FROM incidencia");
 
             // $stmt -> execute();
