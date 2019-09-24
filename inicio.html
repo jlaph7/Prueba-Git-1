@@ -1,3 +1,9 @@
+<?php
+session_start();
+  
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,45 +21,41 @@
 
   <!-- Custom styles for this template -->
   <link href="css/business-frontpage.css" rel="stylesheet">
-  <!-- Google maps -->
-  <script src="js/maps.js"></script>
+
 </head>
 
 
 <body>
 
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-header fixed-top">
-    <!-- bg-dark-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-header fixed-top"> <!-- bg-dark-->
     <div class="container">
       <a class="navbar-brand" href="#">Titulo</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="inicio.html">Inicio
               <span class="sr-only">(current)</span>
             </a>
           </li>
-          <li class="nav-item  active">
+          <li class="nav-item">
             <a class="nav-link" href="reg_inc.html">Registrar Incidencia</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Mis incidencias</a>
           </li>
-
         </ul>
       </div>
     </div>
   </nav>
 
 
-  <!-- Header -->
+ <!-- Header -->
 
-  <!-- py ..bottom || mt ..top -->
+ <!-- py ..bottom || mt ..top -->
   <header class="bg-primary py-4 mb-5">
     <div class="container h-100">
       <div class="row h-100 align-items-center">
@@ -67,49 +69,62 @@
 
 
   <!-- Body -->
-  <div class="container">
+ <div class="container">
 
-    <form>
-      <div class="form-group">
-        <label for="exampleFormControlInput1">Título</label>
-        <input type="text" class="form-control" id="txTitulo" placeholder="">
-      </div>
 
-      <div class="form-group">
-        <label for="exampleFormControlTextarea1">Descripción</label>
-        <textarea class="form-control" id="txtaDescripcion" rows="3"></textarea>
-      </div>
-      <div class="row">
-        <div class="col-md-4 mb-5">
-          <label for="exampleFormControlTextarea1">Foto o video</label>
-          </br>
-          <a href="#" class="btn btn-primary">Subir</a>
-        </div>
-        <div class="col-md-4 mb-5">
+    <!-- /.row -->
+
+    <div class="row">
+      <div class="col-md-12 mb-5">
+        <div class=" card h-100">
+            
+    <div class="row" style="  margin-right: 15px; margin-left: 15px;">
+          <div class="col-md-8 card-body">
+            <h4 class="card-title"> </h4>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus.</p>
+          </div>
+
+          <div class="col-md-4 card-body">
           <img class="card-img-top" src="http://placehold.it/300x200" alt="">
-        </div>
-        <div class="col-md-4 mb-5">
-          <img class="card-img-top" src="http://placehold.it/300x200" alt="">
+          </div>
+
+    </div>
+
+          <div class="card-footer">
+            <a href="#" class="btn btn-primary">Find Out More!</a>
+          </div>
         </div>
       </div>
-      <div class="row justify-content-md-center w-100 mb-5" style="height: 25rem;">
-        <div id="map" class=" col-12"></div>
-      </div>
-      <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTkoeJJrsOvPo42V_ZbVhRb3uvunNPJ2k&callback=initMap">
-      </script>
+
+<?php
+
+  include ("conexion.php");
+     $consulta="select * from bebida";
+  $query=mysqli_query($conexion, $consulta); 
+
+  while ($f=mysqli_fetch_array($query,MYSQLI_ASSOC)) {
+  ?>
+
+   <div class="producto">
+   <center>
+    <img src="productos/<?php echo $f['imagen'];?>">
+
+
+    <br>
+    <span><?php echo $f['nombre'];?></span><br><br>
+     
+    <a href="./detallebebida.php?id=<?php echo $f['idb'];?>">ver</a>
+   </center>
+  </div>
+ <?php
+  }
+ ?>﻿  
+    
 
 
 
-      <div class="row  justify-content-end" style="height: 50px; margin-bottom: 1rem; margin-right: 1rem">
-        <div class="col-lg-1">
-          <a href="#" class="btn btn-call">Registrar</a>
-
-        </div>
-
-      </div>
-
-    </form>
+    </div>
+    <!-- /.row -->
 
   </div>
   <!-- /.container -->
@@ -118,8 +133,7 @@
 
 
   <!-- Footer -->
-  <footer class="py-5 bg-footer">
-    <!-- bg-dark-->
+  <footer class="py-5 bg-footer">  <!-- bg-dark-->
     <div class="container">
       <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
     </div>
