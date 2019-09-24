@@ -86,20 +86,7 @@ function EditarIncidencia(){
      return json_encode($reg);
 }
 
-// function ListarIncidencia(){
-//     include_once("../controller/conexion.php");
-// // var_dump($_POST);
-//     $pag = $_POST['pag'];
-//     $crxp=10;
-//     $inicio = ($pag-1)*$crxp;
 
-//     $sql="SELECT * FROM incidencia LIMIT $inicio,$crxp";
-
-//     $res = $cnx->query($sql);
-//                 $row = $res -> fetchAll(PDO::FETCH_ASSOC);
-//                 return json_encode($row);
-
-// }
 
 
     function ListarIncidencia($valor){
@@ -107,7 +94,7 @@ function EditarIncidencia(){
         include_once("../controller/conexion.php");
 
         $pag = $_POST['pag'];
-        //$pag = 1;
+
         $crxp=10;
         $inicio = ($pag-1)*$crxp;
 
@@ -136,6 +123,4 @@ function EditarIncidencia(){
         $cnx = null;
 
     }
-    //FIN MOSTRAR
-// }
 ?>
