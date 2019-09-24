@@ -9,7 +9,7 @@ if (isset($_POST['jsaccion'])) {
             echo Actualizar();
             break;
         case 'Editar':
-            echo  Editar();
+            echo  Ver();
             break;
         case 'Eliminar':
             echo Eliminar();
@@ -72,7 +72,7 @@ function Actualizar()
     return $resp;
 }
 
-function Editar()
+function Ver()
 {
     include_once("../controller/conexion.php");
     $id = $_POST['jsid_usuario'];
