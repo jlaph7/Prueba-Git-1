@@ -64,7 +64,7 @@
 
 
         <!-- /.row -->
-        <div class="row" id="indencias_row">
+        <div class="row" id="incidencias_row">
 
             
         </div>

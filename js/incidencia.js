@@ -1,4 +1,4 @@
-const id_Incidencias = document.getElementById('indencias_row');
+const id_Incidencias = document.getElementById('incidencias_row');
 
 window.onload = function() {
     MostrarIncidencia();
@@ -24,7 +24,7 @@ function obtener_id() {
 }
 
 function MostrarIncidencia() {
-    var url = '../model/incidencia.modelo.php';
+    var url = '../model/Incidencia.modelo.php';
     const data = new FormData();
     data.append('pag', 1);
     data.append('jsaccion', 'ListarIncidencia');
@@ -38,16 +38,16 @@ function MostrarIncidencia() {
     fetch(url, miInit)
         .then(function(response) { // Primer THEN CONEXION CON EL ARCHIVO
             if (response.ok) {
-                return response.json();
+                return response.text();
             } else {
                 throw "Error en la llamada Ajax";
             }
         }).then(function(response) { // SE TIENE LOS DATOS, SE PUEDE IMPRIMIR
-
-            console.log(response);
-
+            //Conversion a objeto
+            var respuesta = JSON.parse(response);
+            console.log(respuesta);
             let html = '';
-            response.forEach(function(datos) {
+            respuesta.forEach(function(datos) {
 
                 html += `
                 <div class="col-md-4 mb-5">
@@ -65,7 +65,7 @@ function MostrarIncidencia() {
 			</div>           
             `
             });
-            document.getElementById('indencias_row').innerHTML = html;
+            document.getElementById('incidencias_row').innerHTML = html;
 
         })
         .catch(function(error) { // CONTROLADOR DE ERRORES
@@ -278,16 +278,16 @@ function nuevo() {
 }
 
 function paginacion() {
-    $.ajax({
-        url: 'paginacion.php',
-        dataType: 'text',
-        type: 'post',
-        data: {},
-        success: function(data) {
-            $("#paginacion").html(data);
-        },
-        error: function(jqXhr, textStatus, errorThrown) {
-            console.log(errorThrown);
-        }
-    });
+    // $.ajax({
+    //     url: 'paginacion.php',
+    //     dataType: 'text',
+    //     type: 'post',
+    //     data: {},
+    //     success: function(data) {
+    //         $("#paginacion").html(data);
+    //     },
+    //     error: function(jqXhr, textStatus, errorThrown) {
+    //         console.log(errorThrown);
+    //     }
+    // });
 }
