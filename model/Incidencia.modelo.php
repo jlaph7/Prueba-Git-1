@@ -18,8 +18,7 @@ if (isset( $_POST['jsaccion'])) {
             break;
         case 'ListarIncidencia':
            $valor = $_POST['jsid_usuario'];
-         
-           
+                    
            if ($valor=null) {
             echo ListarIncidencia(null);
            }else{
@@ -120,6 +119,9 @@ function EditarIncidencia(){
 
      return json_encode($reg);
 }
+
+
+
 
     function ListarIncidencia($valor){
 
