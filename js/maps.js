@@ -1,17 +1,17 @@
-var map, infoWindow;
-var divmap = document.getElementById('map');
+var map, infoWindow, marker;
+//var divmap = document.getElementById('map');
 
-cargarEventListeners();
+// cargarEventListeners();
 
-function cargarEventListeners() {
-    // Al cargar el documento, mostrar LocalStorage
-    document.addEventListener('DOMContentLoaded', CargarMapa);
-}
+// function cargarEventListeners() {
+//     // Al cargar el documento, mostrar LocalStorage
+//     document.addEventListener('DOMContentLoaded', CargarMapa);
+// }
 
-function CargarMapa() {
-    initMap();
+// function CargarMapa() {
+//     initMap();
 
-}
+// }
 
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
@@ -19,7 +19,7 @@ function initMap() {
             lat: -12.046,
             lng: -77.042
         },
-        zoom: 6,
+        zoom: 8,
         disableDefaultUI: true,
         zoomControl: true,
         mapTypeControl: false,
@@ -28,39 +28,60 @@ function initMap() {
         rotateControl: false,
         fullscreenControl: false
     });
-    infoWindow = new google.maps.InfoWindow;
 
-    map.addListener('click', function(e) {
-        placeMarkerAndPanTo(e.latLng, map);
-      });
-    }
 
-    function placeMarkerAndPanTo(latLng, map) {
-      var marker = new google.maps.Marker({
-        position: latLng,
-        map: map
-      });
-      map.panTo(latLng);
-    }
+
+    var ubitexto = 'Usted se encuentra aqui';
+    infoWindow = new google.maps.InfoWindow({
+        content: ubitexto
+    });
     // Try HTML5 geolocation.
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
+            var latitud = position.coords.latitude;
+            var longitud = position.coords.longitude;
+            //console.log("latiud: "+latitud);
+            //console.log("longitud: "+longitud);
+
             var pos = {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
+                lat: latitud,
+                lng: longitud
+
             };
 
-            infoWindow.setPosition(pos);
-            infoWindow.setContent('Ubicación Actual');
-            infoWindow.open(map);
+            marker = new google.maps.Marker({
+                position: pos,
+                map: map,
+                //title: 'titulo 1'
+            });
+            map.panTo(pos);
+            map.setZoom(18);
+            infoWindow.open(map, marker);
+            marker.addListener('click', function () {
+                infoWindow.open(map, marker);
+            });
+
             map.setCenter(pos);
         }, function () {
+            //Localizacion no encontrada
             handleLocationError(true, infoWindow, map.getCenter());
+            map.addListener('click', function(e) {
+                placeMarkerAndPanTo(e.latLng, map);
+              });
+
+            function placeMarkerAndPanTo(latLng, map) {
+              marker = new google.maps.Marker({
+                position: latLng,
+                map: map
+              });
+              map.panTo(latLng);
+            }
         });
     } else {
-        // Browser doesn't support Geolocation
+        // Navegador no acepta gelocación
         handleLocationError(false, infoWindow, map.getCenter());
     }
+
 }
 
 
@@ -68,7 +89,7 @@ function initMap() {
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     infoWindow.setPosition(pos);
     infoWindow.setContent(browserHasGeolocation ?
-        'Error: The Geolocation service failed.' :
-        'Error: Your browser doesn\'t support geolocation.');
+        'No es posible determinar su ubicación, seleccione una en el mapa' :
+        'Su Navegador no permite gelocación');
     infoWindow.open(map);
 }

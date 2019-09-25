@@ -16,8 +16,9 @@
   <!-- Custom styles for this template -->
   <link href="css/business-frontpage.css" rel="stylesheet">
   <!-- Google maps -->
-  <link  href="css/maps.css" rel="stylesheet">
-  <script src="js/maps.js"></script>
+  <link href="css/maps.css" rel="stylesheet">
+
+
 </head>
 
 
@@ -99,9 +100,7 @@
         <div class="row justify-content-md-center w-auto mb-5" style="height: 25rem;">
           <div class="w-100 mx-3 rounded-lg border " id="map"></div>
         </div>
-        <br>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTkoeJJrsOvPo42V_ZbVhRb3uvunNPJ2k&callback=initMap&language=es&region=PE">
-        </script>
+
 
         <div class="row mb-5 mr-1">
           <div class="ml-auto">
@@ -130,6 +129,9 @@
   </footer>
 
   <!-- Bootstrap core JavaScript -->
+  <script src="js/maps.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTkoeJJrsOvPo42V_ZbVhRb3uvunNPJ2k&callback=initMap&language=es&region=PE">
+  </script>
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
