@@ -1,9 +1,13 @@
-const BtnPrueba = document.getElementById('btnPrueba');
+const id_Incidencias = document.getElementById('indencias_row');
 
+window.onload = function() {
+    MostrarIncidencia();
+
+};
 CargarEventListener();
 
 function CargarEventListener() {
-    BtnPrueba.addEventListener('click', MostrarIncidencia);
+    id_Incidencias.addEventListener('DOMContentLoaded', MostrarIncidencia);
 }
 
 function mensaje() {
@@ -34,7 +38,7 @@ function MostrarIncidencia() {
     fetch(url, miInit)
         .then(function(response) { // Primer THEN CONEXION CON EL ARCHIVO
             if (response.ok) {
-                return response.text();
+                return response.json();
             } else {
                 throw "Error en la llamada Ajax";
             }
@@ -42,35 +46,32 @@ function MostrarIncidencia() {
 
             console.log(response);
 
-            // let html = '';
+            let html = '';
+            response.forEach(function(datos) {
 
-            // response.forEach(function(datos) {
-
-            //     html += `
-            //     <tr>
-            //  			<td>${datos.id_incidencia}</td>
-            //  			<td>${datos.id_usuario}</td>
-            //  			<td>${datos.titulo}</td>
-            //              <td>${datos.descripcion}</td>
-            //              <td>${datos.fecha}</td>
-            //              <td>${datos.hora}</td>
-            //              <td>${datos.latitud}</td>
-            //              <td>${datos.longitud}</td>
-            //  			<td>
-            //  				<button class='btn btn-info' type='button' onclick='editar(${datos.id_incidencia})'>Editar</button>
-            // 				<button class='btn btn-danger' type='button' onclick='eliminar(${datos.id_incidencia})'>Eliminar</button>
-            //  			</td>
-            //  		</tr>
-            // `;
-
-            // });
-            // document.getElementById('divregistros').innerHTML = html;
+                html += `
+                <div class="col-md-4 mb-5">
+                <div class="card h-100">
+                    <img class="card-img-top" src="http://placehold.it/300x200" alt="">
+                    <div class="card-body">
+                        <h4 class="card-title">${datos.titulo}</h4>
+                        <p class="card-text"><small class="text-muted">${datos.fecha}-${datos.hora}</small></p>
+                        <p class="card-text">${datos.descripcion}</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="detalleincidencia.php?id=${datos.id_incidencia}" class="btn btn-primary">Ver detalles</a>
+                    </div>
+                </div>
+			</div>           
+            `
+            });
+            document.getElementById('indencias_row').innerHTML = html;
 
         })
         .catch(function(error) { // CONTROLADOR DE ERRORES
             console.error("!Hubo un error!", error);
         });
-    // paginacion();
+    paginacion();
 }
 
 function lista(pag) {
@@ -93,10 +94,7 @@ function lista(pag) {
             }
         }).then(function(response) { // SE TIENE LOS DATOS, SE PUEDE IMPRIMIR
 
-            console.log(response);
-
             let html = '';
-
             response.forEach(function(datos) {
 
                 html += `
