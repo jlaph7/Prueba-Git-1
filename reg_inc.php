@@ -1,10 +1,5 @@
-<?php
-session_start();
-  
-?>
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
 
@@ -13,24 +8,27 @@ session_start();
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Business Frontpage - Start Bootstrap Template</title>
+  <title>Registrar incidencia</title>
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
   <link href="css/business-frontpage.css" rel="stylesheet">
-
+  <!-- Google maps -->
+  <link  href="css/maps.css" rel="stylesheet">
+  <script src="js/maps.js"></script>
 </head>
 
 
 <body>
 
   <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-header fixed-top"> <!-- bg-dark-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-header fixed-top">
+    <!-- bg-dark-->
     <div class="container">
 
-      <img class="logo" img src="https://img.elcomercio.pe/bundles/appcms/images/elcomercio/logo_ec.png?1568233897"  alt="">
+      <img class="logo" img src="https://img.elcomercio.pe/bundles/appcms/images/elcomercio/logo_ec.png?1568233897" alt="">
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -43,9 +41,9 @@ session_start();
             </a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="reg_inc.php">Reportar</a>
+            <a class="nav-link" href="reg_inc.html">Reportar</a>
           </li>
-           <li class="nav-item">
+          <li class="nav-item">
             <a class="nav-link" href="#">Perfil</a>
           </li>
         </ul>
@@ -54,9 +52,9 @@ session_start();
   </nav>
 
 
- <!-- Header -->
+  <!-- Header -->
 
- <!-- py ..bottom || mt ..top -->
+  <!-- py ..bottom || mt ..top -->
   <header class="bg-primary py-1 mb-1">
     <div class="container h-100">
       <div class="row h-100 align-items-center">
@@ -70,46 +68,61 @@ session_start();
 
 
   <!-- Body -->
- <div class="container">
+  <div class="container ">
+    <div class="row  justify-content-md-center">
+      <form class="col-12 col-lg-8">
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Título</label>
+          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="">
+        </div>
 
-  <form>
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">Descripción</label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+        <div class="row">
 
-
-  <div class="form-group">
-    <label for="exampleFormControlTextarea1">Descripción</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-  </div>
-  <div class="row">
-    <div class="col-md-4 mb-5" >
-          <label for="exsampleFormControlTextarea1">Foto o video</label>
-        </br>
-            <a href="#" class="btn btn-primary">Subir</a>
+          <!-- <div class="col-md-4 mb-1">
+            <img class="card-img-top" src="http://placehold.it/300x200" alt="">
+          </div> -->
+          <div class="input-group mb-5 px-3">
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="inputGroupFile02">
+              <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose
+                file</label>
+            </div>
+            <div class="input-group-append">
+              <span class="input-group-text" id="inputGroupFileAddon02">Upload</span>
+            </div>
           </div>
-    <div class="col-md-4 mb-5" >
-          <img class="card-img-top" src="http://placehold.it/300x200" alt="">
+        </div>
+        <div class="row justify-content-md-center w-auto mb-5" style="height: 25rem;">
+          <div class="w-100 mx-3 rounded-lg border " id="map"></div>
+        </div>
+        <br>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTkoeJJrsOvPo42V_ZbVhRb3uvunNPJ2k&callback=initMap&language=es&region=PE">
+        </script>
+
+        <div class="row mb-5 mr-1">
+          <div class="ml-auto">
+            <a href="#" class="btn btn-call">Registrar</a>
+          </div>
+
+        </div>
+
+      </form>
     </div>
-        <div class="col-md-4 mb-5" >
-          <img class="card-img-top" src="http://placehold.it/300x200" alt="">
-  </div>
-   </div>
-     <div class="row  justify-content-end" style="height: 50px; margin-bottom: 1rem; margin-right: 1rem" >
-          <div class="col-lg-1" >
-      <a href="#" class="btn btn-call" >Registrar</a>
 
-    </div>
 
   </div>
-
-</form>
-
-</div>
   <!-- /.container -->
 
 
 
 
   <!-- Footer -->
-  <footer class="py-5 bg-footer">  <!-- bg-dark-->
+  <footer class="py-5 bg-footer">
+    <!-- bg-dark-->
     <div class="container">
       <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
     </div>
