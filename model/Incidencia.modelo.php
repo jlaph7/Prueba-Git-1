@@ -29,6 +29,7 @@ if (isset( $_POST['jsaccion'])) {
 
 function GuardarIncidencia(){
     include_once("../controller/conexion.php");
+    
     $id_usu = $_POST['jsid_usuario'];
     $titu = $_POST['jstitulo'];
     $desc = $_POST['jsdescripcion'];
@@ -36,15 +37,27 @@ function GuardarIncidencia(){
     $hora = $_POST['jshora'];
     $lat = $_POST['jslatitud'];
     $lon = $_POST['jslongitud'];
+    $video = $_POST['jsvideo'];
 
-    $sql='call GuardarIncidencia(?,?,?,?,?,?,?)';
-
+    $sql = 'call GuardarIncidencia(:id_usu,:titu,:desc,:fecha,:hora,:lat,:lon,:video)';
     $stmt = $cnx->prepare($sql);
-    $stmt->bind_param('issssss', $id_usu, $titu, $desc, $fecha, $hora, $lat, $lon);
-    $stmt->execute();
-    $resp=$stmt->get_result();
-    $stmt->close();
-    $cnx->close();
+    $stmt->bindParam(":id_usu", $id_usu);
+    $stmt->bindParam(":titu", $titu);
+    $stmt->bindParam(":desc", $desc);
+    $stmt->bindParam(":fecha", $fecha);
+    $stmt->bindParam(":hora", $hora);
+    $stmt->bindParam(":lat", $lat);
+    $stmt->bindParam(":lon", $lon);
+    $stmt->bindParam(":video", $video);
+    if ($stmt->execute()) {
+        $resp = 1;
+    } else {
+        $resp = 0;
+    }
+
+    $stmt = null;
+    $cnx = null;
+
     return $resp;
 }
 
@@ -59,15 +72,30 @@ function ActualizarIncidencia()
     $hora = $_POST['jshora'];
     $lat = $_POST['jslatitud'];
     $lon = $_POST['jslongitud'];
-
-    $sql = 'call ActualizarUsuario(?,?,?,?,?,?,?,?)';
+    $video = $_POST['jsvideo'];
+    
+    $sql = 'call ActualizarIncidencia(:id,:id_usu,:titu,:desc,:fecha,:hora,:lat,:lon,:video)';
     $stmt = $cnx->prepare($sql);
-    $stmt->bind_param('iissssss', $id, $id_usu, $titu, $desc, $fecha, $hora, $lat, $lon);
-    $stmt->execute();
-    $resp = $stmt->get_result();
-    $stmt->close();
-    $cnx->close();
+    $stmt->bindParam(":id", $id);
+    $stmt->bindParam(":id_usu", $id_usu);
+    $stmt->bindParam(":titu", $titu);
+    $stmt->bindParam(":desc", $desc);
+    $stmt->bindParam(":fecha", $fecha);
+    $stmt->bindParam(":hora", $hora);
+    $stmt->bindParam(":lat", $lat);
+    $stmt->bindParam(":lon", $lon);
+    $stmt->bindParam(":video", $video);
+    if ($stmt->execute()) {
+        $resp = 1;
+    } else {
+        $resp = 0;
+    }
+
+    $stmt = null;
+    $cnx = null;
+
     return $resp;
+    
 }
 
 function EliminarIncidencia(){

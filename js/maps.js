@@ -19,13 +19,32 @@ function initMap() {
             lat: -12.046,
             lng: -77.042
         },
-        zoom: 6
+        zoom: 6,
+        disableDefaultUI: true,
+        zoomControl: true,
+        mapTypeControl: false,
+        scaleControl: true,
+        streetViewControl: false,
+        rotateControl: false,
+        fullscreenControl: false
     });
     infoWindow = new google.maps.InfoWindow;
 
+    map.addListener('click', function(e) {
+        placeMarkerAndPanTo(e.latLng, map);
+      });
+    }
+
+    function placeMarkerAndPanTo(latLng, map) {
+      var marker = new google.maps.Marker({
+        position: latLng,
+        map: map
+      });
+      map.panTo(latLng);
+    }
     // Try HTML5 geolocation.
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
+        navigator.geolocation.getCurrentPosition(function (position) {
             var pos = {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
@@ -35,7 +54,7 @@ function initMap() {
             infoWindow.setContent('Ubicación Actual');
             infoWindow.open(map);
             map.setCenter(pos);
-        }, function() {
+        }, function () {
             handleLocationError(true, infoWindow, map.getCenter());
         });
     } else {
@@ -43,6 +62,8 @@ function initMap() {
         handleLocationError(false, infoWindow, map.getCenter());
     }
 }
+
+
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     infoWindow.setPosition(pos);

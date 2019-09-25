@@ -71,10 +71,11 @@
   <!-- Body -->
   <div class="container ">
     <div class="row  justify-content-md-center">
-      <form class="col-12 col-lg-8">
+      <form class="col-12 col-lg-8" role="form" method="post" enctype="multipart/form-data">
         <div class="form-group">
+          <input type="hidden" name="idUsuario" id="idUsuario" value="5">
           <label for="exampleFormControlInput1">Título</label>
-          <input type="email" class="form-control" id="txtTitulo" name="txtTitulo" placeholder="">
+          <input type="text" class="form-control" id="txtTitulo" name="txtTitulo" placeholder="">
         </div>
 
         <div class="form-group">
@@ -88,26 +89,30 @@
           </div> -->
           <div class="input-group mb-5 px-3">
             <div class="custom-file">
-              <input type="file" class="custom-file-input" id="fileVideo">
-              <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Selecciona un video</label>
+              <input type="file" class="custom-file-input" name="nuevaFoto" id="nuevaFoto">
+              
+              <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Selecciona una imagen</label>
+              
             </div>
-          </div>
-
-          <!-- ENTRADA PARA SUBIR FOTO -->
-          <div class="form-group">
-
-            <div class="panel">SUBIR FOTO</div>
-
-            <input type="file" class="nuevaFoto" name="nuevaFoto">
-
-            <p class="help-block">Peso máximo de la foto 2MB</p>
-
-            <img src="vistas/img/usuarios/default/anonymous.png" class="img-thumbnail previsualizar" width="100px">
 
           </div>
-          
+
+        <!-- ENTRADA FOTO  -->
+
+        <div class="input-group mb-5 px-3">
+            <div class="custom-file">
+                <p class="help-block">Peso máximo de la foto 100MB</p>
+            </div>
+            <div>
+                <img src="images/default/anonymous.png" class="img-thumbnail previsualizar" width="100px">
+            </div>
+        </div>
+        
 
         </div>
+
+        
+
         <div class="row justify-content-md-center w-auto mb-5" style="height: 25rem;">
           <div class="w-100 mx-3" id="map"></div>
         </div>
@@ -116,12 +121,25 @@
           src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTkoeJJrsOvPo42V_ZbVhRb3uvunNPJ2k&callback=initMap">
         </script>
 
-        <div class="row mb-5 mr-1">
+        <!-- <div class="row mb-5 mr-1">
           <div class="ml-auto">
             <a href="#" class="btn btn-call">Registrar</a>
           </div>
 
+        </div> -->
+
+        <div class="modal-footer">
+          
+          <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Salir</button>
+
+          <button type="submit" class="btn btn-primary"> Guardar usuario</button>
+
         </div>
+
+        <!--======================
+        CREACIÓN DE obj PARRA GUARDAR USUARIO
+        =======================-->
+
 
       </form>
     </div>

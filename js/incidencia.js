@@ -7,7 +7,7 @@ window.onload = function() {
 CargarEventListener();
 
 function CargarEventListener() {
-    id_Incidencias.addEventListener('DOMContentLoaded', MostrarIncidencia);
+    // id_Incidencias.addEventListener('DOMContentLoaded', MostrarIncidencia);
 }
 
 function mensaje() {
