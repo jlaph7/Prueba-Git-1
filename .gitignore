@@ -1,4 +1,4 @@
 *.txt
 *.xml
-images
+images/
 controller/conexion.php
