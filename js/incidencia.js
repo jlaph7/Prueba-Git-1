@@ -1,9 +1,9 @@
-const id_Incidencias = document.getElementById('indencias_row');
+const id_Incidencias = document.getElementById('incidencias_row');
 
-window.onload = function() {
-    MostrarIncidencia();
+// window.onload = function() {
+//     MostrarIncidencia();
 
-};
+// };
 CargarEventListener();
 
 function CargarEventListener() {
@@ -18,13 +18,9 @@ function inicio() {
     lista(1);
 }
 
-function obtener_id() {
-    var id = "<?php 1  ?>";
-    console.log(id);
-}
 
 function MostrarIncidencia() {
-    var url = '../model/incidencia.modelo.php';
+    var url = '../model/Incidencia.modelo.php';
     const data = new FormData();
     data.append('pag', 1);
     data.append('jsaccion', 'ListarIncidencia');
@@ -38,16 +34,22 @@ function MostrarIncidencia() {
     fetch(url, miInit)
         .then(function(response) { // Primer THEN CONEXION CON EL ARCHIVO
             if (response.ok) {
-                return response.json();
+                return response.text();
             } else {
                 throw "Error en la llamada Ajax";
             }
         }).then(function(response) { // SE TIENE LOS DATOS, SE PUEDE IMPRIMIR
+            //Conversion a objeto
+            var respuesta = JSON.parse(response);
 
-            console.log(response);
+            // let incidencias = respuesta.map(incidencia => { return { id_incidencia: incidencia.id_incidencia, fecha: incidencia.fecha, titulo: incidencia.titulo } })
+            // incidencias.map((incidencia, indice, Array) => {
+            //     console.log(indice);
+            //     console.log(incidencia.titulo);
+            // })
 
             let html = '';
-            response.forEach(function(datos) {
+            respuesta.forEach(function(datos) {
 
                 html += `
                 <div class="col-md-4 mb-5">
@@ -59,13 +61,13 @@ function MostrarIncidencia() {
                         <p class="card-text">${datos.descripcion}</p>
                     </div>
                     <div class="card-footer">
-                        <a href="detalleincidencia.php?id=${datos.id_incidencia}" class="btn btn-primary">Ver detalles</a>
+                        <a href="Detalle_incidencia.php?id=${datos.id_incidencia}" class="btn btn-primary">Ver detalles</a>
                     </div>
                 </div>
 			</div>           
             `
             });
-            document.getElementById('indencias_row').innerHTML = html;
+            document.getElementById('incidencias_row').innerHTML = html;
 
         })
         .catch(function(error) { // CONTROLADOR DE ERRORES
@@ -278,16 +280,16 @@ function nuevo() {
 }
 
 function paginacion() {
-    $.ajax({
-        url: 'paginacion.php',
-        dataType: 'text',
-        type: 'post',
-        data: {},
-        success: function(data) {
-            $("#paginacion").html(data);
-        },
-        error: function(jqXhr, textStatus, errorThrown) {
-            console.log(errorThrown);
-        }
-    });
+    // $.ajax({
+    //     url: 'paginacion.php',
+    //     dataType: 'text',
+    //     type: 'post',
+    //     data: {},
+    //     success: function(data) {
+    //         $("#paginacion").html(data);
+    //     },
+    //     error: function(jqXhr, textStatus, errorThrown) {
+    //         console.log(errorThrown);
+    //     }
+    // });
 }

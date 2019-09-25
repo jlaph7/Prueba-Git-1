@@ -64,7 +64,7 @@
 
 
         <!-- /.row -->
-        <div class="row" id="indencias_row">
+        <div class="row" id="incidencias_row">
 
             
         </div>
@@ -77,6 +77,8 @@
 </div>
 <!--container end.//-->
 <script src="../js/incidencia.js"></script>
-
+<script type="text/javascript">
+		window.onload = MostrarIncidencia();
+	</script>
 </body>
 </html>

@@ -18,8 +18,7 @@ if (isset( $_POST['jsaccion'])) {
             break;
         case 'ListarIncidencia':
            $valor = $_POST['jsid_usuario'];
-                    
-           if ($valor=null) {
+           if ($valor='null') {
             echo ListarIncidencia(null);
            }else{
             echo ListarIncidencia($valor);
@@ -130,7 +129,7 @@ function EditarIncidencia(){
         $pag = $_POST['pag'];
 
         
-        $crxp=10;
+        $crxp=10 ;
         $inicio = ($pag-1)*$crxp;
 
         if ($valor != null) {
@@ -149,8 +148,14 @@ function EditarIncidencia(){
 
             $sql="SELECT * FROM incidencia LIMIT $inicio,$crxp";
             $res = $cnx->query($sql);
-                $row = $res -> fetchAll(PDO::FETCH_ASSOC);
-                //var_dump($row);
+            $row = $res ->fetchAll(PDO::FETCH_ASSOC);
+            // // $array = unserialize($row); 
+            // $input = iconv('UTF-8', 'UTF-8//IGNORE', utf8_encode($row));
+            
+            
+            // $error = json_last_error();
+            // var_dump($row);
+            // die();
             return json_encode($row);
         }
 
