@@ -1,8 +1,4 @@
 <?php
-    
-
-    
-
     include_once("../model/incidencia.modelo.php");
 
     //$item = "id_usuario";
