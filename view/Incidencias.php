@@ -77,6 +77,8 @@
 </div>
 <!--container end.//-->
 <script src="../js/incidencia.js"></script>
-
+<script type="text/javascript">
+		window.onload = MostrarIncidencia();
+	</script>
 </body>
 </html>

@@ -1,9 +1,9 @@
 const id_Incidencias = document.getElementById('incidencias_row');
 
-window.onload = function() {
-    MostrarIncidencia();
+// window.onload = function() {
+//     MostrarIncidencia();
 
-};
+// };
 CargarEventListener();
 
 function CargarEventListener() {
@@ -18,10 +18,6 @@ function inicio() {
     lista(1);
 }
 
-function obtener_id() {
-    var id = "<?php 1  ?>";
-    console.log(id);
-}
 
 function MostrarIncidencia() {
     var url = '../model/Incidencia.modelo.php';
@@ -45,7 +41,13 @@ function MostrarIncidencia() {
         }).then(function(response) { // SE TIENE LOS DATOS, SE PUEDE IMPRIMIR
             //Conversion a objeto
             var respuesta = JSON.parse(response);
-            console.log(respuesta);
+
+            // let incidencias = respuesta.map(incidencia => { return { id_incidencia: incidencia.id_incidencia, fecha: incidencia.fecha, titulo: incidencia.titulo } })
+            // incidencias.map((incidencia, indice, Array) => {
+            //     console.log(indice);
+            //     console.log(incidencia.titulo);
+            // })
+
             let html = '';
             respuesta.forEach(function(datos) {
 
@@ -59,7 +61,7 @@ function MostrarIncidencia() {
                         <p class="card-text">${datos.descripcion}</p>
                     </div>
                     <div class="card-footer">
-                        <a href="detalleincidencia.php?id=${datos.id_incidencia}" class="btn btn-primary">Ver detalles</a>
+                        <a href="Detalle_incidencia.php?id=${datos.id_incidencia}" class="btn btn-primary">Ver detalles</a>
                     </div>
                 </div>
 			</div>           
