@@ -72,7 +72,7 @@
         <div class="d-flex flex-column">
 
 
-          <div class="input-group mt-2 mb-5 ">
+          <div class="input-group mt-2 ">
             <div class="custom-file">
               <input type="file" class="custom-file-input" name="nuevaFoto" id="nuevaFoto">
               <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Selecciona una imagen</label>
@@ -80,18 +80,18 @@
           </div>
 
           <!-- ENTRADA FOTO  -->
-          <div class="input-group mb-5 ">
+          <div class="d-flex flex-column my-3 justify-content-center">
+            <div>
+              <img src="images/default/anonymous.png" class="img-thumbnail previsualizar w-50" id="previsualizar">
+            </div>
             <div class="custom-file">
               <p class="help-block">Peso máximo de la foto 100MB</p>
             </div>
-            <div>
-              <img src="images/default/anonymous.png" class="img-thumbnail previsualizar" id="previsualizar" width="100px">
-            </div>
+
           </div>
 
 
         </div>
-
 
 
         <div class="d-flex w-auto mb-5" style="height: 25rem;">
