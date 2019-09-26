@@ -177,7 +177,7 @@ function guardarIncidencia() {
     var imagen = document.getElementById('nuevaFoto').files[0];
 
     // console.log(id_usu);
-    // console.log(titu);
+    console.log(titu);
     // console.log(desc);
     // console.log(lat);
     // console.log(lon);
