@@ -38,11 +38,13 @@ function GuardarIncidencia(){
     $id_usu = $_POST['jsid_usuario'];
     $titu = $_POST['jstitulo'];
     $desc = $_POST['jsdescripcion'];
-    $fecha = $_POST['jsfecha'];
-    $hora = $_POST['jshora'];
     $lat = $_POST['jslatitud'];
     $lon = $_POST['jslongitud'];
+    $imagen = $_FILES['jsimagen'];
     // $video = $_POST['jsvideo'];
+    var_dump($lat);
+    var_dump($lon);
+    var_dump($imagen);
 
     $sql = 'call sp_CrearIncidencia(:id_usu,:titu,:desc,:fecha,:hora,:lat,:lon)';
     $stmt = $cnx->prepare($sql);
@@ -63,6 +65,7 @@ function GuardarIncidencia(){
     $stmt = null;
     $cnx = null;
 
+    $resp=1;
     return $resp;
 }
 
