@@ -48,10 +48,12 @@ function initMap() {
                 lng: longitud
 
             };
-
+            var imagen='images/maps/1x/personpin.png';
             marker = new google.maps.Marker({
                 position: pos,
                 map: map,
+                icon: imagen,
+                animation: google.maps.Animation.DROP,
                 //title: 'titulo 1'
             });
             map.panTo(pos);

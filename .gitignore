@@ -1,4 +1,4 @@
 *.txt
 *.xml
-images/
+images/incidencias/
 controller/conexion.php
