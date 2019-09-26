@@ -51,11 +51,14 @@
 
   <div class="container ">
 
-
     <div class="row  justify-content-md-center">
-    <div class="alert" id="RegistroMensaje"></div>
+
+
       <form class="col col-md-8 col-lg-6" enctype="multipart/form-data">
-        <div class="d-flex justify-content-center mt-4">
+        <div class="d-flex mt-2">
+          <div class="alert" id="RegistroMensaje"></div>
+        </div>
+        <div class="d-flex justify-content-center mt-2">
           <h2>Registrar incidencia</h2>
         </div>
 
@@ -132,7 +135,7 @@
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  
+
   <script src="js/incidencia.js"></script>
 
 </body>
