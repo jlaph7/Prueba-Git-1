@@ -85,7 +85,7 @@
               <p class="help-block">Peso máximo de la foto 100MB</p>
             </div>
             <div>
-              <img src="images/default/anonymous.png" class="img-thumbnail previsualizar" width="100px">
+              <img src="images/default/anonymous.png" class="img-thumbnail previsualizar" id="previsualizar" width="100px">
             </div>
           </div>
 
@@ -96,8 +96,11 @@
 
         <div class="d-flex w-auto mb-5" style="height: 25rem;">
           <div class="w-100  rounded-lg border" id="map"></div>
+          <p id="plat" hidden>
+          </p>
+          <p id="plng" hidden>
+          </p>
         </div>
-
         <div class="d-flex mb-5 ">
           <!-- <button type="submit" class="ml-auto btn btn-primary">Guardar incidencia</button> -->
           <button type="button" id="btnCrearIncidencia" class="btn btn-primary btn-block"> Crear Incidencia </button>
@@ -122,6 +125,8 @@
 
   <!-- Google maps -->
   <script src="js/maps.js"></script>
+  <script src="js/incidencia.js"></script>
+
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTkoeJJrsOvPo42V_ZbVhRb3uvunNPJ2k&callback=initMap">
   </script>
   <!-- Bootstrap core JavaScript -->
