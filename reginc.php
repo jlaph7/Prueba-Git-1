@@ -96,8 +96,11 @@
 
         <div class="d-flex w-auto mb-5" style="height: 25rem;">
           <div class="w-100  rounded-lg border" id="map"></div>
+          <p id="plat" hidden>
+          </p>
+          <p id="plng" hidden>
+          </p>
         </div>
-
         <div class="d-flex mb-5 ">
           <button type="submit" class="ml-auto btn btn-primary">Guardar usuario</button>
         </div>
