@@ -1,5 +1,5 @@
 // const id_Incidencias = document.getElementById('incidencias_row');
-const btnCrearIncidencia = document.getElementById('btnCrearIncidencia');
+var btnCrearIncidencia = document.getElementById('btnCrearIncidencia');
 
 // window.onload = function() {
 //     MostrarIncidencia();
