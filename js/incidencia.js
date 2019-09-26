@@ -64,7 +64,7 @@ function MostrarIncidencia() {
                         <a href="Detalle_incidencia.php?id=${datos.id_incidencia}" class="btn btn-primary">Ver detalles</a>
                     </div>
                 </div>
-			</div>           
+			</div>
             `
             });
             document.getElementById('incidencias_row').innerHTML = html;
@@ -130,7 +130,7 @@ function eliminar(id) {
 
     var url = '../model/incidencia.modelo.php';
 
-    // Enviando datos post 
+    // Enviando datos post
     const data = new FormData();
     data.append('jsaccion', 'Eliminar');
     data.append('jsid_usuario', id);
@@ -179,7 +179,7 @@ function guardar() {
     if (id > 0) {
         // Actualizar
         var url = '../model/incidencia.modelo.php';
-        // Enviando datos post 
+        // Enviando datos post
         const data = new FormData();
         data.append('jsaccion', 'Actualizar');
         data.append('jsid_incidencia', id_inci);

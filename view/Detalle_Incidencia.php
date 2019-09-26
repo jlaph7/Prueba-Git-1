@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="../vendor/bootstrap/js/bootstrap.js" rel="stylesheet">
-	 <link href="../vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
-	 <link href="../css/business-frontpage.css" rel="stylesheet">	 
-     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="../vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../css/business-frontpage.css" rel="stylesheet">
+
+    <script src="../vendor/bootstrap/js/bootstrap.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
     <title>Incidencias</title>
 </head>
 
@@ -21,14 +24,14 @@
         <div class="container">
             <a class="navbar-brand" href="#">Titulo</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
                         <a class="nav-link" href="inicio.html">Inicio
-              <span class="sr-only">(current)</span>
-            </a>
+                            <span class="sr-only">(current)</span>
+                        </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="reg_inc.html">Registrar Incidencia</a>
@@ -54,29 +57,31 @@
             </div>
         </div>
     </header>
-<body>
 
-<div class="container">
+    <body>
 
-
-    <!-- Body -->
-    <div class="container">
+        <div class="container">
 
 
-        <!-- /.row -->
-        <div class="row" id="incidencias_row">
+            <!-- Body -->
+            <div class="container">
 
-            
+
+                <!-- /.row -->
+                <div class="row" id="incidencias_row">
+
+
+                </div>
+                <!-- /.row -->
+
+            </div>
+            <!-- /.container -->
+
+
         </div>
-        <!-- /.row -->
+        <!--container end.//-->
+        <script src="../js/incidencia.js"></script>
 
-    </div>
-    <!-- /.container -->
+    </body>
 
-
-</div>
-<!--container end.//-->
-<script src="../js/incidencia.js"></script>
-
-</body>
 </html>
