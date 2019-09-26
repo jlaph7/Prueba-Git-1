@@ -1,4 +1,4 @@
-var map, infoWindow, marker;
+var map, infoWindow,marker;
 //var divmap = document.getElementById('map');
 
 // cargarEventListeners();
@@ -25,7 +25,7 @@ function CenterControl(controlDiv, map) {
     controlUI.style.marginBottom = '22px';
     controlUI.style.textAlign = 'center';
     controlUI.title = 'Click para detectar ubicación';
-    controlUI.src='images/maps/ubiac.png';
+    controlUI.src='images/maps/conect.png';
     controlDiv.appendChild(controlUI);
 
     // Set CSS for the control interior.
@@ -73,6 +73,7 @@ function initMap() {
 }
 
 function Localizarme() {
+    
     var ubitexto = '¿Se encuentra aqui?';
     infoWindow = new google.maps.InfoWindow({
         content: ubitexto
@@ -80,9 +81,10 @@ function Localizarme() {
     // Try HTML5 geolocation.
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
+            //marker.setMap(null);
+
             var latitud = position.coords.latitude;
             var longitud = position.coords.longitude;
-
 
 
             var pos = {
@@ -90,12 +92,12 @@ function Localizarme() {
                 lng: longitud
 
             };
-            var imagen = 'images/maps/user.png';
+            var imagen = 'images/maps/person.png';
             marker = new google.maps.Marker({
                 position: pos,
                 map: map,
                 icon: imagen,
-                animation: google.maps.Animation.DROP,
+                //animation: google.maps.Animation.DROP,
                 //title: 'titulo 1'
             });
             map.panTo(pos);
