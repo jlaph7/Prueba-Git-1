@@ -48,7 +48,7 @@ function insertarImagen(){
 			CREAMOS EL DIRECTORIO DONDE GUARDAMOS LA FOTO DEL USUARIO
 		========================================================*/
 
-		$directorio = "view/images/incidencias/".$_POST['jsid_usuario'];
+		$directorio = "../images/incidencias/".$_POST['jsid_usuario'];
 
 		mkdir($directorio, 0755);//permisos de lectura y escritura
 
@@ -64,7 +64,7 @@ function insertarImagen(){
 						
 			$aleatorio = mt_rand(100,999);
 
-			$ruta = "view/images/".$_POST['jsid_usuario']."/".$aleatorio.".jpg";
+			$ruta = "../images/incidencias/".$_POST['jsid_usuario']."/".$aleatorio.".jpg";
 
 			$origen = imagecreatefromjpeg($_FILES['jsimagen']["tmp_name"]);
 
@@ -84,7 +84,7 @@ function insertarImagen(){
 						
 		$aleatorio = mt_rand(100,999);
 
-		$ruta = "view/images/incidencias/".$_POST['jsid_usuario']."/".$aleatorio.".png";
+		$ruta = "../images/incidencias/".$_POST['jsid_usuario']."/".$aleatorio.".png";
 
 		$origen = imagecreatefrompng($_FILES['jsimagen']["tmp_name"]);
 
@@ -115,19 +115,21 @@ function GuardarIncidencia(){
     $lat = $_POST['jslatitud'];
     $lon = $_POST['jslongitud'];
     $imagen = $_FILES['jsimagen'];
-    $ruta = & insertarImagen();
+    $ruta = insertarImagen();
     
+    var_dump(insertarImagen());
+    var_dump($id_usu);
+    var_dump($titu);
+    var_dump($desc);
     var_dump($lat);
     var_dump($lon);
-    var_dump($ruta);
+    // var_dump($ruta);
 
-    $sql = 'call sp_CrearIncidencia_2(:id_usu,:titu,:desc,:fecha,:hora,:lat,:lon,:ruta)';
+    $sql = 'call sp_CrearIncidencia_2(:id_usu,:titu,:desc,:lat,:lon,:ruta)';
     $stmt = $cnx->prepare($sql);
     $stmt->bindParam(":id_usu", $id_usu);
     $stmt->bindParam(":titu", $titu);
     $stmt->bindParam(":desc", $desc);
-    $stmt->bindParam(":fecha", $fecha);
-    $stmt->bindParam(":hora", $hora);
     $stmt->bindParam(":lat", $lat);
     $stmt->bindParam(":lon", $lon);
     $stmt->bindParam(":ruta", $ruta);

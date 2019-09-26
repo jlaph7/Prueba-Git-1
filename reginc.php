@@ -60,7 +60,7 @@
         </div>
 
         <div class="form-group">
-          <input type="hidden" name="idUsuario" id="idUsuario" value="5">
+          <input type="hidden" name="idUsuario" id="idUsuario" value="1">
           <label for="exampleFormControlInput1">Título</label>
           <input type="text" class="form-control" id="txtTitulo" name="txtTitulo" placeholder="">
         </div>
