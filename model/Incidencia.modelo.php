@@ -37,9 +37,9 @@ function GuardarIncidencia(){
     $hora = $_POST['jshora'];
     $lat = $_POST['jslatitud'];
     $lon = $_POST['jslongitud'];
-    $video = $_POST['jsvideo'];
+    // $video = $_POST['jsvideo'];
 
-    $sql = 'call GuardarIncidencia(:id_usu,:titu,:desc,:fecha,:hora,:lat,:lon,:video)';
+    $sql = 'call sp_CrearIncidencia(:id_usu,:titu,:desc,:fecha,:hora,:lat,:lon)';
     $stmt = $cnx->prepare($sql);
     $stmt->bindParam(":id_usu", $id_usu);
     $stmt->bindParam(":titu", $titu);
@@ -48,7 +48,7 @@ function GuardarIncidencia(){
     $stmt->bindParam(":hora", $hora);
     $stmt->bindParam(":lat", $lat);
     $stmt->bindParam(":lon", $lon);
-    $stmt->bindParam(":video", $video);
+    // $stmt->bindParam(":video", $video);
     if ($stmt->execute()) {
         $resp = 1;
     } else {
