@@ -14,7 +14,7 @@
   <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="css/business-frontpage.css" rel="stylesheet">
+  <!-- <link href="css/business-frontpage.css" rel="stylesheet"> -->
 
 </head>
 
@@ -22,7 +22,7 @@
 <body>
 
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-header fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-header">
     <!-- bg-dark-->
     <div class="container">
 
