@@ -25,7 +25,7 @@ function CenterControl(controlDiv, map) {
     controlUI.style.marginBottom = '22px';
     controlUI.style.textAlign = 'center';
     controlUI.title = 'Click para detectar ubicación';
-    controlUI.src='images/maps/1x/personpin.png';
+    controlUI.src='images/maps/ubiac.png';
     controlDiv.appendChild(controlUI);
 
     // Set CSS for the control interior.
@@ -90,7 +90,7 @@ function Localizarme() {
                 lng: longitud
 
             };
-            var imagen = 'images/maps/1x/personpin.png';
+            var imagen = 'images/maps/user.png';
             marker = new google.maps.Marker({
                 position: pos,
                 map: map,
