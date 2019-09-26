@@ -1,4 +1,4 @@
-const id_Incidencias = document.getElementById('incidencias_row');
+// const id_Incidencias = document.getElementById('incidencias_row');
 const btnCrearIncidencia = document.getElementById('btnCrearIncidencia');
 
 // window.onload = function() {
@@ -168,111 +168,88 @@ function eliminar(id) {
 }
 
 function guardarIncidencia() {
-    var id_inci = $("#id_incidencia").val();
+    // var id_inci = $("#id_incidencia").val();
     var id_usu = $("#idUsuario").val();
     var titu = $("#txtTitulo").val();
     var desc = $("#txtaDescripcion").val();
-    var lat = document.getElementById('plat').value;
-    var lon = document.getElementById('plng').value;
+    var lat = document.getElementById('plat').innerHTML;
+    var lon = document.getElementById('plng').innerHTML;
     var imagen = document.getElementById('nuevaFoto').files[0];
 
-    console.log(id_usu);
-    console.log(titu);
-    console.log(desc);
-    console.log(lat);
-    console.log(lon);
-    console.log(imagen);
+    // console.log(id_usu);
+    // console.log(titu);
+    // console.log(desc);
+    // console.log(lat);
+    // console.log(lon);
+    // console.log(imagen);
+
+    // Guardar
+    var url = 'model/Incidencia.modelo.php';
+    // Enviando datos post
+    const data = new FormData();
+    data.append('jsaccion', 'Guardar');
+    data.append('jsid_usuario', id_usu);
+    data.append('jstitulo', titu);
+    data.append('jsdescripcion', desc);
+    data.append('jslatitud', lat);
+    data.append('jslongitud', lon);
+    data.append('jsimagen', imagen);
+
+    var miInit = {
+        method: 'POST',
+        body: data
+    };
+
+    fetch(url, miInit)
+        .then(function(response) { // Primer THEN CONEXION CON EL ARCHIVO
+            if (response.ok) {
+                return response.text();
+            } else {
+                throw "Error en la llamada Ajax";
+            }
+        }).then(function(response) { // SE TIENE LOS DATOS, SE PUEDE IMPRIMIR
+            // if (response = 1) {
+            console.log(response);
+            // document.getElementById('divmsg').innerHTML = 'Registro actualizado';
+            // lista(1);
 
 
-    //     if (id > 0) {
-    //         // Actualizar
-    //         var url = '../model/incidencia.modelo.php';
-    //         // Enviando datos post
-    //         const data = new FormData();
-    //         data.append('jsaccion', 'Actualizar');
-    //         data.append('jsid_incidencia', id_inci);
-    //         data.append('jsid_usuario', id_usu);
-    //         data.append('jstitulo', titu);
-    //         data.append('jsdescripcion', desc);
-    //         data.append('jsfecha', fecha);
-    //         data.append('jshora', hora);
-    //         data.append('jslatitud', lat);
-    //         data.append('jslongitud', lon);
-    //         //    data.append('jsestado', estado);
+            // } else {
+            // document.getElementById('divmsg').innerHTML = 'Error al actualizar registro!';
+            // console.log('Fallo :');
 
-    //         var miInit = {
-    //             method: 'POST',
-    //             body: data
-    //         };
-
-    //         fetch(url, miInit)
-    //             .then(function(response) { // Primer THEN CONEXION CON EL ARCHIVO
-    //                 if (response.ok) {
-    //                     return response.text();
-    //                 } else {
-    //                     throw "Error en la llamada Ajax";
-    //                 }
-    //             }).then(function(response) { // SE TIENE LOS DATOS, SE PUEDE IMPRIMIR
-    //                 if (response == '1') {
-    //                     console.log(response);
-    //                     document.getElementById('divmsg').innerHTML = 'Registro actualizado';
-    //                     lista(1);
+            // $("#divmsg").html("Error al eliminar el registro!");
+            // }
+        })
+        .catch(function(error) { // CONTROLADOR DE ERRORES
+            console.error("!Hubo un error!", error);
+        });
 
 
-    //                 } else {
-    //                     document.getElementById('divmsg').innerHTML = 'Error al actualizar registro!';
-
-    //                     // $("#divmsg").html("Error al eliminar el registro!");
-    //                 }
-    //             })
-    //             .catch(function(error) { // CONTROLADOR DE ERRORES
-    //                 console.error("!Hubo un error!", error);
-    //             });
-
-    //     } else {
-    //         $.ajax({
-    //             url: '../model/incidencia.modelo.php',
-    //             dataType: 'text',
-    //             type: 'post',
-    //             data: { 'jsaccion': 'Guardar', 'jsid_usuario': id_usu, 'jstitulo': titu, 'jsdescripcion': desc, 'jsfecha': fecha, 'jshora': hora, 'jslatitud': lat, 'jslongitud': lon },
-    //             success: function(data) {
-    //                 if (data == 1) {
-    //                     $("#divmsg").html("Registro insertado!");
-    //                     lista(1);
-    //                 } else {
-    //                     $("#divmsg").html("Error al insertar el registro!");
-    //                 }
-    //             },
-    //             error: function(jqXhr, textStatus, errorThrown) {
-    //                 console.log(errorThrown);
-    //             }
-    //         });
-    //     }
-    //     limpiar();
-    //     $("#divform").modal("toggle");
-    // }
-
-    // function editar(id) {
-    //     $.ajax({
-    //         url: '../model/incidencia.modelo.php',
-    //         dataType: 'text',
-    //         type: 'post',
-    //         data: { 'jsaccion': 'Editar', 'jsid_incidencia': id },
-    //         success: function(data) {
-    //             var datos = JSON.parse(data);
-    //             $("#divform").modal("toggle");
-    //             $("#id_incidencia").val(datos.id_incidencia);
-    //             $("#id_usuario").val(datos.id_usuario);
-    //             $("#txtTitulo").val(datos.titulo);
-    //             $("#txtDescripcion").val(datos.descripcion);
-    //             //$("#txtemail").val(datos.email);
-    //             console.log(data);
-    //         },
-    //         error: function(jqXhr, textStatus, errorThrown) {
-    //             console.log(errorThrown);
-    //         }
-    //     });
+    //limpiar();
 }
+
+// function editar(id) {
+//     $.ajax({
+//         url: '../model/incidencia.modelo.php',
+//         dataType: 'text',
+//         type: 'post',
+//         data: { 'jsaccion': 'Editar', 'jsid_incidencia': id },
+//         success: function(data) {
+//             var datos = JSON.parse(data);
+//             $("#divform").modal("toggle");
+//             $("#id_incidencia").val(datos.id_incidencia);
+//             $("#id_usuario").val(datos.id_usuario);
+//             $("#txtTitulo").val(datos.titulo);
+//             $("#txtDescripcion").val(datos.descripcion);
+//             //$("#txtemail").val(datos.email);
+//             console.log(data);
+//         },
+//         error: function(jqXhr, textStatus, errorThrown) {
+//             console.log(errorThrown);
+//         }
+//     });
+// }
 
 function limpiar() {
     //$("#id_usuario").val('');
@@ -307,7 +284,6 @@ function paginacion() {
 function cargarImagen() {
 
     const fotos = document.getElementById('nuevaFoto');
-    console.log(fotos);
     fotos.addEventListener("change", function() {
         if (fotos.value != null) {
             var imagen = this.files[0];
@@ -354,7 +330,7 @@ function cargarImagen() {
                     var rutaImagen = event.target.result;
 
                     $(".previsualizar").attr("src", rutaImagen);
-                    console.log(rutaImagen);
+
                     //document.getElementById('previsualizar').attributes("src", rutaImagen);
 
                 })
