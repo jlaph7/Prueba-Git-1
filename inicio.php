@@ -76,26 +76,9 @@ session_start();
     <!-- /.row -->
 
    <div class="row">
-      <div class="col-md-12 mb-5">
-        <div class=" card h-100">
-            
-    <div class="row" style="  margin-right: 15px; margin-left: 15px;">
-          <div class="col-md-8 card-body">
-            <h4 class="card-title"> </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus.</p>
-          </div>
 
-          <div class="col-md-4 card-body">
-          <img class="card-img-top" src="http://placehold.it/300x200" alt="">
-          </div>
 
-    </div>
 
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">Find Out More!</a>
-          </div>
-        </div>
-      </div>
 
        <div class="col-md-12 mb-5">
         <div class=" card h-100">
@@ -164,6 +147,7 @@ session_start();
           </div>
         </div>
       </div>
+      </div>
 
  <?php
   }
@@ -182,12 +166,9 @@ session_start();
 
 
   <!-- Footer -->
-  <footer class="py-4 bg-footer"  style="padding-top: -1rem !important; padding-bottom: -1rem !important;">  <!-- bg-dark-->
-    <div class="container">
-      <p class="m-0 text-center text-white"></p>
-    </div>
-    <!-- /.container -->
-  </footer>
+ <?php
+  include('footer.php');
+ ?>﻿ 
 
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
