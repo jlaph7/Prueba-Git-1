@@ -63,8 +63,8 @@ function initMap() {
 
             map.setCenter(pos);
 
-            document.getElementById("plat").val=latitud;
-            document.getElementById("plng").val=longitud;
+            document.getElementById("plat").innerHTML=latitud;
+            document.getElementById("plng").innerHTML=longitud;
 
 
         }, function () {
