@@ -27,17 +27,19 @@ if (isset( $_POST['jsaccion'])) {
     }
 }
 
-function insertarImaegn(){
-    $imagen = $_POST['jsimagen'];
+function insertarImagen(){
+
+    // $id_usu = $_POST['jsid_usuario'];
+    // $imagen = $_FILES['jsimagen'];
     /*========================
 	    VALIDAR IMAGEN
     ========================*/
 
 	$ruta = "";
 
-	if (isset($_FILES[$imagen]["tmp_name"])) {
+	if (isset($_FILES['jsimagen']["tmp_name"])) {
 
-		list($ancho, $alto) = getimagesize($_FILES[$imagen]["tmp_name"]);
+		list($ancho, $alto) = getimagesize($_FILES['jsimagen']["tmp_name"]);
 
 		$nuevoAncho = 500;
 		$nuevoAlto = 500;
@@ -46,7 +48,7 @@ function insertarImaegn(){
 			CREAMOS EL DIRECTORIO DONDE GUARDAMOS LA FOTO DEL USUARIO
 		========================================================*/
 
-		$directorio = "view/images/incidencias/".$_POST["nuevoUsuario"];
+		$directorio = "view/images/incidencias/".$_POST['jsid_usuario'];
 
 		mkdir($directorio, 0755);//permisos de lectura y escritura
 
@@ -54,7 +56,7 @@ function insertarImaegn(){
 			DE ACUERDO AL TIPO DE IMAGEN APLICAMOS LAS FUNCIONES PHP
 		========================================================*/
 
-		if ($_FILES["nuevaFoto"]["type"] == "image/jpeg") {
+		if ($_FILES['jsimagen']["type"] == "image/jpeg") {
 
 			/*=======================================================
 				GUARDAMOS LA IMAGEN EN EL DIRECTORIO
@@ -62,9 +64,9 @@ function insertarImaegn(){
 						
 			$aleatorio = mt_rand(100,999);
 
-			$ruta = "vistas/img/usuarios/".$_POST["nuevoUsuario"]."/".$aleatorio.".jpg";
+			$ruta = "view/images/".$_POST['jsid_usuario']."/".$aleatorio.".jpg";
 
-			$origen = imagecreatefromjpeg($_FILES["nuevaFoto"]["tmp_name"]);
+			$origen = imagecreatefromjpeg($_FILES['jsimagen']["tmp_name"]);
 
 			$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
 
@@ -72,12 +74,9 @@ function insertarImaegn(){
 
 			imagejpeg($destino, $ruta);
 
-
 	    }
 
-
-
-		if ($_FILES["nuevaFoto"]["type"] == "image/png") {
+		if ($_FILES['jsimagen']["type"] == "image/png") {
 
 			/*=======================================================
 				GUARDAMOS LA IMAGEN EN EL DIRECTORIO
@@ -85,9 +84,9 @@ function insertarImaegn(){
 						
 		$aleatorio = mt_rand(100,999);
 
-		$ruta = "vistas/img/usuarios/".$_POST["nuevoUsuario"]."/".$aleatorio.".png";
+		$ruta = "view/images/incidencias/".$_POST['jsid_usuario']."/".$aleatorio.".png";
 
-		$origen = imagecreatefrompng($_FILES["nuevaFoto"]["tmp_name"]);
+		$origen = imagecreatefrompng($_FILES['jsimagen']["tmp_name"]);
 
 		$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
 
@@ -98,7 +97,7 @@ function insertarImaegn(){
 
 		}
 
-
+        return $ruta;
 					
 	}
 	/*========================
@@ -116,12 +115,13 @@ function GuardarIncidencia(){
     $lat = $_POST['jslatitud'];
     $lon = $_POST['jslongitud'];
     $imagen = $_FILES['jsimagen'];
-    // $video = $_POST['jsvideo'];
+    $ruta = & insertarImagen();
+    
     var_dump($lat);
     var_dump($lon);
-    var_dump($imagen);
+    var_dump($ruta);
 
-    $sql = 'call sp_CrearIncidencia(:id_usu,:titu,:desc,:fecha,:hora,:lat,:lon)';
+    $sql = 'call sp_CrearIncidencia_2(:id_usu,:titu,:desc,:fecha,:hora,:lat,:lon,:ruta)';
     $stmt = $cnx->prepare($sql);
     $stmt->bindParam(":id_usu", $id_usu);
     $stmt->bindParam(":titu", $titu);
@@ -130,7 +130,7 @@ function GuardarIncidencia(){
     $stmt->bindParam(":hora", $hora);
     $stmt->bindParam(":lat", $lat);
     $stmt->bindParam(":lon", $lon);
-    // $stmt->bindParam(":video", $video);
+    $stmt->bindParam(":ruta", $ruta);
     if ($stmt->execute()) {
         $resp = 1;
     } else {
