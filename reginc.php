@@ -85,7 +85,7 @@
               <p class="help-block">Peso máximo de la foto 100MB</p>
             </div>
             <div>
-              <img src="images/default/anonymous.png" class="img-thumbnail previsualizar" width="100px">
+              <img src="images/default/anonymous.png" class="img-thumbnail previsualizar" id="previsualizar" width="100px">
             </div>
           </div>
 
@@ -121,6 +121,8 @@
 
   <!-- Google maps -->
   <script src="js/maps.js"></script>
+  <script src="js/incidencia.js"></script>
+
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTkoeJJrsOvPo42V_ZbVhRb3uvunNPJ2k&callback=initMap">
   </script>
   <!-- Bootstrap core JavaScript -->
