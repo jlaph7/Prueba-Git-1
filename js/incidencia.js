@@ -1,4 +1,5 @@
 const id_Incidencias = document.getElementById('incidencias_row');
+const btnCrearIncidencia = document.getElementById('btnCrearIncidencia');
 
 // window.onload = function() {
 //     MostrarIncidencia();
@@ -8,6 +9,7 @@ CargarEventListener();
 
 function CargarEventListener() {
     // id_Incidencias.addEventListener('DOMContentLoaded', MostrarIncidencia);
+    btnCrearIncidencia.addEventListener('click', guardarIncidencia);
 }
 
 function mensaje() {
@@ -164,16 +166,14 @@ function eliminar(id) {
 
 }
 
-function guardar() {
+function guardarIncidencia() {
     var id_inci = $("#id_incidencia").val();
     var id_usu = $("#id_usuario").val();
     var titu = $("#txtTitulo").val();
     var desc = $("#txtaDescripcion").val();
-    var fecha = $("#txtFecha").val();
-    var hora = $("#txtHora").val();
     var lat = $("#txtLatitud").val();
     var lon = $("#txtLongitud").val();
-    //var estado = $("#txtestado").val();
+    var imagen = $("#txtestado").val();
 
     console.log(id);
     if (id > 0) {

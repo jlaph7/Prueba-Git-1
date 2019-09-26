@@ -27,6 +27,11 @@ if (isset( $_POST['jsaccion'])) {
     }
 }
 
+function insertarImaegn(){
+    $lon = $_POST['jslongitud'];
+}
+
+
 function GuardarIncidencia(){
     include_once("../controller/conexion.php");
     
