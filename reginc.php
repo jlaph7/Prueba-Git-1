@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <title>Registrar incidencia</title>
 
   <!-- Bootstrap core CSS -->
@@ -53,8 +53,8 @@
 
 
     <div class="row  justify-content-md-center">
-      <!-- formulario -->
-      <form class="col col-md-8 col-lg-6" role="form" method="post" enctype="multipart/form-data">
+    <div class="alert" id="RegistroMensaje"></div>
+      <form class="col col-md-8 col-lg-6" enctype="multipart/form-data">
         <div class="d-flex justify-content-center mt-4">
           <h2>Registrar incidencia</h2>
         </div>
@@ -102,7 +102,8 @@
           </p>
         </div>
         <div class="d-flex mb-5 ">
-          <button type="submit" class="ml-auto btn btn-primary">Guardar usuario</button>
+          <!-- <button type="submit" class="ml-auto btn btn-primary">Guardar incidencia</button> -->
+          <button type="button" id="btnCrearIncidencia" class="btn btn-primary btn-block"> Crear Incidencia </button>
         </div>
 
       </form>
@@ -131,6 +132,8 @@
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  
+  <script src="../js/incidencia.js"></script>
 
 </body>
 
