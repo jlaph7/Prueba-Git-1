@@ -117,7 +117,7 @@ function GuardarIncidencia(){
     $imagen = $_FILES['jsimagen'];
     $ruta = insertarImagen();
     
-    var_dump(insertarImagen());
+    // var_dump(insertarImagen());
     var_dump($id_usu);
     var_dump($titu);
     var_dump($desc);
