@@ -40,8 +40,8 @@ function initMap() {
         navigator.geolocation.getCurrentPosition(function (position) {
             var latitud = position.coords.latitude;
             var longitud = position.coords.longitude;
-            //console.log("latiud: "+latitud);
-            //console.log("longitud: "+longitud);
+
+
 
             var pos = {
                 lat: latitud,
@@ -62,6 +62,11 @@ function initMap() {
             });
 
             map.setCenter(pos);
+
+            document.getElementById("plat").val=latitud;
+            document.getElementById("plng").val=longitud;
+
+
         }, function () {
             //Localizacion no encontrada
             handleLocationError(true, infoWindow, map.getCenter());
